@@ -4,7 +4,7 @@ import test from '../components/media/images/test.png'
 const Catalog = () => {
     return (
         <div className='testDiv'>
-            Catalog
+            Catalogrefwfrw
             <img src={test} alt='' />
         </div>
     )
