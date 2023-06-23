@@ -1,3 +1,4 @@
+/* reset */
 * {
     margin: 0;
     padding: 0;
@@ -39,6 +40,29 @@ ul li {
 button {
     cursor: pointer;
 }
+
+/* reset end */
+
+
+
+h2 {
+    margin: 0 0 0 80px;
+    font-size: 38px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+
+@media (max-width: 1024px) {
+
+    h2 {
+        margin: 0 0 0 4.2vw;
+        font-size: 16px;
+    }
+    
+}
+
 
 
 /* testing */

@@ -29,16 +29,16 @@ const MainSlider = () => {
         <div className={cl.sliderContainer}>
             <Slider {...settings}>
                 <div className={cl.sliderItem}>
-                    <div className={cl.sliderItemCaption}>
-                        <div className={cl.sliderItemCaption_1}>скрытые плинтуса</div>
-                        <div className={cl.sliderItemCaption_2}>красивый пол<br/>без лишних деталей</div>
-                    </div>
                 </div>
                 <div className={cl.sliderItem}>
                 </div>
                 <div className={cl.sliderItem}>
                 </div>
             </Slider>
+            <div className={cl.sliderCaption}>
+                <div className={cl.sliderCaption_1}>скрытые плинтуса</div>
+                <div className={cl.sliderCaption_2}>красивый пол<br />без лишних деталей</div>
+            </div>
         </div>
     )
 }

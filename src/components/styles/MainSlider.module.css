@@ -1,6 +1,8 @@
 .sliderContainer {
     width: 100%;
     margin: 0 auto;
+
+    position: relative;
 }
 
 .sliderItem {
@@ -8,29 +10,27 @@
     background-image: url(../media/images/MainSlider_Img.png);
     background-size: cover;
     background-position: bottom;
-
-    position: relative;
 }
 
-.sliderItemCaption {
+.sliderCaption {
     position: absolute;
     top: 48.7%;
     left: 6%;
 }
 
-.sliderItemCaption div {
+.sliderCaption div {
     font-size: 45px;
     line-height: 55px;
     letter-spacing: 0.04em;
     color: #FFFFFF;
 }
 
-.sliderItemCaption_1 {
+.sliderCaption_1 {
     font-weight: 900;
     text-transform: uppercase;
 }
 
-.sliderItemCaption_2 {
+.sliderCaption_2 {
     font-weight: 600;
 }
 
@@ -45,13 +45,13 @@
         background-position: bottom;
     }
 
-    .sliderItemCaption {
+    .sliderCaption {
         position: absolute;
         top: 41.4%;
         left: 4.2%;
     }
 
-    .sliderItemCaption div {
+    .sliderCaption div {
         font-size: 16px;
         line-height: 20px;
     }
