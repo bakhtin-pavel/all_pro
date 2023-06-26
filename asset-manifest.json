@@ -1,29 +1,43 @@
 {
   "files": {
-    "main.css": "/all_pro/static/css/main.2afe0011.css",
-    "main.js": "/all_pro/static/js/main.bf0117e8.js",
+    "main.css": "/all_pro/static/css/main.facfd220.css",
+    "main.js": "/all_pro/static/js/main.0245adbb.js",
     "static/media/plint_img.png": "/all_pro/static/media/plint_img.b713102337750ee3e4ca.png",
     "static/media/MainSlider_Img.png": "/all_pro/static/media/MainSlider_Img.ddc2baf472507744d09f.png",
     "static/media/test.png": "/all_pro/static/media/test.ddc2baf472507744d09f.png",
+    "static/media/allprointerior_0.png": "/all_pro/static/media/allprointerior_0.82453bda52918434de2b.png",
+    "static/media/allprointerior_1.png": "/all_pro/static/media/allprointerior_1.78901466d8a0725ac2ba.png",
     "static/media/mainSlider_imgMobile.png": "/all_pro/static/media/mainSlider_imgMobile.a9b47d495c9eba9231ac.png",
+    "static/media/allprointerior_2.png": "/all_pro/static/media/allprointerior_2.19ed75445b3e3b2a6eb3.png",
+    "static/media/allprointerior_2_mobile.png": "/all_pro/static/media/allprointerior_2_mobile.8d21bd97f930426e7161.png",
+    "static/media/allprointerior_0_mobile.png": "/all_pro/static/media/allprointerior_0_mobile.34eea221404e59090bc7.png",
+    "static/media/allprointerior_3.png": "/all_pro/static/media/allprointerior_3.f4dd13d64467f16afa43.png",
+    "static/media/allprointerior_3_mobile.png": "/all_pro/static/media/allprointerior_3_mobile.6d90bea6d2c0a1e5f183.png",
+    "static/media/allprointerior_1_mobile.png": "/all_pro/static/media/allprointerior_1_mobile.044ba20e05771e718633.png",
     "static/media/plint_2.png": "/all_pro/static/media/plint_2.cf090cb272b6f00e7379.png",
     "static/media/plint_3.png": "/all_pro/static/media/plint_3.47c377469d971105a0ae.png",
     "static/media/plint_0.png": "/all_pro/static/media/plint_0.720e2e3c59fc0b813b6b.png",
     "static/media/plint_1.png": "/all_pro/static/media/plint_1.70aa055bc915ea233e28.png",
+    "static/media/social_icon_1.svg": "/all_pro/static/media/social_icon_1.69ee3e3a5c1b243bad72f8a13ec2b0a3.svg",
+    "static/media/social_icon_0.svg": "/all_pro/static/media/social_icon_0.ac19d1fa0aa7e956c1d61e47af72836a.svg",
+    "static/media/social_icon_2.svg": "/all_pro/static/media/social_icon_2.8977d94e8f804919f37a81d8d7e21168.svg",
     "static/media/slick.svg": "/all_pro/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/all_pro/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/all_pro/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/address_icon.svg": "/all_pro/static/media/address_icon.d63710f35785e31592e618f793b9aaab.svg",
     "static/media/slick.woff": "/all_pro/static/media/slick.295183786cd8a1389865.woff",
+    "static/media/phone_icon.svg": "/all_pro/static/media/phone_icon.bc9dcff57394fd6352700318cf1e4b24.svg",
+    "static/media/email_icon.svg": "/all_pro/static/media/email_icon.6c31a99573c7235b36eec8728bd84f76.svg",
     "index.html": "/all_pro/index.html",
     "static/media/sliderBlueprintPrev.svg": "/all_pro/static/media/sliderBlueprintPrev.2a0b1c3d7111ff1f2389.svg",
     "static/media/sliderBlueprintNext.svg": "/all_pro/static/media/sliderBlueprintNext.40e6afb936f6235b7d41.svg",
     "static/media/burger_mobile.svg": "/all_pro/static/media/burger_mobile.dda257f170ff8b954f34.svg",
     "static/media/itemSwitchIcon.svg": "/all_pro/static/media/itemSwitchIcon.c18fd1b981a6a0713970.svg",
-    "main.2afe0011.css.map": "/all_pro/static/css/main.2afe0011.css.map",
-    "main.bf0117e8.js.map": "/all_pro/static/js/main.bf0117e8.js.map"
+    "main.facfd220.css.map": "/all_pro/static/css/main.facfd220.css.map",
+    "main.0245adbb.js.map": "/all_pro/static/js/main.0245adbb.js.map"
   },
   "entrypoints": [
-    "static/css/main.2afe0011.css",
-    "static/js/main.bf0117e8.js"
+    "static/css/main.facfd220.css",
+    "static/js/main.0245adbb.js"
   ]
 }
