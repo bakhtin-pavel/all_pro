@@ -2,8 +2,6 @@ import React from 'react';
 
 import cl from './styles/Footer.module.css';
 
-import Logo from './Logo';
-
 import address_icon from './media/images/address_icon.svg';
 import phone_icon from './media/images/phone_icon.svg';
 import email_icon from './media/images/email_icon.svg';
@@ -11,9 +9,12 @@ import social_icon_0 from './media/images/social_icon_0.svg';
 import social_icon_1 from './media/images/social_icon_1.svg';
 import social_icon_2 from './media/images/social_icon_2.svg';
 
+import Application from './Application';
+import Logo from './Logo';
+
 const Footer = () => {
     return (
-        <footer>
+        <footer className={cl.footer}>
             <div className={cl.footerLeft}>
                 <div className={cl.logoContainer}>
                     <Logo />
@@ -50,7 +51,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div></div>
+            <Application />
         </footer>
     )
 }
