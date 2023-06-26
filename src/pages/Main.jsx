@@ -1,7 +1,7 @@
 import React from 'react'
-import test from '../components/media/images/test.png'
 import MainSlider from '../components/MainSlider'
 import ALPlinth from '../components/pagesComponents/mainPage/ALPlinth'
+import ALProInterior from '../components/pagesComponents/mainPage/ALProInterior'
 
 const Main = () => {
     return (
@@ -11,9 +11,7 @@ const Main = () => {
 
             <ALPlinth />
 
-            <div className='testDiv'>
-                <img src={test} alt='' />
-            </div>
+            <ALProInterior />
 
         </>
     )
