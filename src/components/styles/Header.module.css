@@ -134,7 +134,7 @@
         width: 36px;
         height: 22px;
         background: transparent;
-        background-image: url(../media/images/header_menu_mobile.png);
+        background-image: url(../media/images/burger_mobile.svg);
     }
 
     .menuMobileClose {

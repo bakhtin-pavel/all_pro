@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import cl from './styles/ALPlinth.module.css';
 
@@ -8,40 +8,13 @@ import "slick-carousel/slick/slick-theme.css";
 
 import SliderButtonNext from '../../UI/button/SliderButtonNext';
 import SliderButtonPrev from '../../UI/button/SliderButtonPrev';
+import DropDown from '../../UI/dropdown/DropDown';
 
 import itemImg from '../../media/images/plint_img.png';
-import plint0 from '../../media/images/plint_0.png'
-import plint1 from '../../media/images/plint_1.png'
-import plint2 from '../../media/images/plint_2.png'
-import plint3 from '../../media/images/plint_3.png'
-
-const DropDown = ({ children, opened, onClose }) => {
-    const dropdownRef = useRef(null)
-
-    useEffect(() => {
-        if (!opened) return;
-
-        const handleClick = (e) => {
-            if (!dropdownRef) return;
-            if (!dropdownRef.current.contains(e.target)) {
-                onClose()
-            }
-        }
-
-        document.addEventListener('click', handleClick)
-
-        return () => document.removeEventListener('click', handleClick)
-
-    }, [opened, onClose])
-
-    if (!opened) return null
-
-    return (
-        <div ref={dropdownRef}>
-            {children}
-        </div>
-    )
-}
+import plint0 from '../../media/images/plint_0.png';
+import plint1 from '../../media/images/plint_1.png';
+import plint2 from '../../media/images/plint_2.png';
+import plint3 from '../../media/images/plint_3.png';
 
 const ALPlinth = () => {
 
@@ -75,14 +48,14 @@ const ALPlinth = () => {
                         e.stopPropagation()
                         setOpen(!open)
                     }}>
-                        <p className={cl.itemSwitchText}>теневой плинтус скрытого монтажа L под рассеиватель</p>
+                        <p className={[cl.itemSwitchTextPlace, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L под рассеиватель</p>
                         <div className={cl.itemSwitchIcon}></div>
                     </button>
-                    <DropDown opened={open} onClose={onClose}>
+                    <DropDown opened={open} onClose={onClose} className={cl.dropDownContainer}>
                         <div className={cl.dropDown}>
-                            <button className={cl.dropDownItem}>теневой плинтус скрытого монтажа L</button>
-                            <button className={cl.dropDownItem}>теневой плинтус скрытого монтажа L</button>
-                            <button className={cl.dropDownItem}>теневой плинтус скрытого монтажа L</button>
+                            <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
+                            <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
+                            <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
                         </div>
                     </DropDown>
                 </div>
