@@ -1,0 +1,123 @@
+.container {
+    width: 520px;
+    height: 440px;
+    background: #A1A6B0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    padding: 57px 80px 40px 80px;
+    position: relative;
+}
+
+
+/* start заголовок + декоративные элементы */
+.black {
+    color: black;
+    line-height: normal;
+    position: relative;
+    z-index: 1;
+}
+
+.rectangle {
+    width: 136px;
+    height: 27px;
+    border-radius: 2px;
+    background: #FFF;
+    position: absolute;
+    top: 68px;
+    left: 53px;
+}
+
+.line_1 {
+    position: absolute;
+    top: 62px;
+    right: 0;
+}
+
+.line_2 {
+    position: absolute;
+    top: 94px;
+    right: 0;
+}
+
+/* end заголовок + декоративные элементы */
+
+
+.form {
+    margin-top: 37px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.submit {
+    width: 160px;
+    height: 40px;
+    border-radius: 3px;
+    background: #FFF;
+
+    font-size: 21px;
+}
+
+
+
+@media (max-width: 1200px) {
+
+    .container {
+        padding: 57px 40px 40px 40px;
+    }
+
+    .rectangle {
+        left: 13px;
+    }
+
+}
+
+
+
+@media (max-width: 1024px) {
+
+    .container {
+        width: 100%;
+        height: 344px;
+
+        padding: 36px 15px 36px 15px;
+    }
+
+
+    /* start заголовок + декоративные элементы */
+    .rectangle {
+        width: 80px;
+        height: 16px;
+        border-radius: 1px;
+        top: 44px;
+        left: 7px;
+    }
+
+    .line_1 {
+        top: 36px;
+    }
+
+    .line_2 {
+        top: 64px;
+    }
+
+    /* end заголовок + декоративные элементы */
+
+    
+    .form {
+        margin-top: 32px;
+
+        align-items: center;
+        gap: 20px;
+    }
+
+    .submit {
+        width: 162px;
+        height: 36px;
+
+        font-size: 16px;
+    }
+
+}

@@ -9,8 +9,8 @@ import social_icon_0 from './media/images/social_icon_0.svg';
 import social_icon_1 from './media/images/social_icon_1.svg';
 import social_icon_2 from './media/images/social_icon_2.svg';
 
-import Application from './Application';
 import Logo from './Logo';
+import ApplicationForm from './ApplicationForm';
 
 const Footer = () => {
     return (
@@ -51,7 +51,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <Application />
+            <ApplicationForm />
         </footer>
     )
 }
