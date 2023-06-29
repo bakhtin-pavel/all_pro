@@ -12,29 +12,29 @@ const ApplicationButton = ({ onClick }) => {
 
     const size = useWindowSize()
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (size.innerWidth < 1025) return;
+    //     if (size.innerWidth < 1025) return;
 
-        const perehod = (size.innerHeight / 5) - 102
+    //     const perehod = (size.innerHeight / 5) - 102
 
-        const updatePosition = () => {
+    //     const updatePosition = () => {
 
-            const scrollY = window.scrollY
+    //         const scrollY = window.scrollY
 
-            if (scrollY > perehod) {
-                !changed && setChanged(true)
-            } else {
-                changed && setChanged(false)
-            }
+    //         if (scrollY > perehod) {
+    //             !changed && setChanged(true)
+    //         } else {
+    //             changed && setChanged(false)
+    //         }
 
-        }
+    //     }
 
-        window.addEventListener('scroll', updatePosition);
-        updatePosition()
-        return () => window.removeEventListener('scroll', updatePosition);
+    //     window.addEventListener('scroll', updatePosition);
+    //     updatePosition()
+    //     return () => window.removeEventListener('scroll', updatePosition);
 
-    })
+    // })
 
     return (
         <button ref={appButtonRef} className={changed ? cl.appButtonChange : cl.appButton} onClick={onClick}>
