@@ -6,6 +6,9 @@ import ApplicationButton from '../components/UI/button/ApplicationButton'
 import MyModal from '../components/UI/modal/MyModal'
 import ApplicationForm from '../components/ApplicationForm'
 
+import cl from './styles/Main.module.css'
+import SpecOffers from '../components/SpecOffers'
+
 const Main = () => {
 
     const [modal, setModal] = useState(false)
@@ -21,10 +24,12 @@ const Main = () => {
 
             <ALPlinth />
 
+            <SpecOffers />
+
             <ALProInterior />
 
             <ApplicationButton onClick={() => setModal(true)} />
-            <MyModal visible={modal} setVisible={setModal}>
+            <MyModal visible={modal} setVisible={setModal} modalContent={cl.modalContent}>
                 <ApplicationForm close={closeModal} />
             </MyModal>
 

@@ -10,7 +10,7 @@ import app_line_2_m from './media/images/application_line_2_m.svg';
 import ApplicationInput from './UI/input/ApplicationInput';
 import { useWindowSize } from '../hooks/useWindowSize';
 
-const ApplicationForm = ({close}) => {
+const ApplicationForm = ({ close }) => {
     const size = useWindowSize()
 
     const [application, setApplication] = useState({ name: '', phone: '', email: '' })

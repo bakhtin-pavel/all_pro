@@ -9,10 +9,10 @@
     background: rgba(0, 0, 0, 0.5);
 
     display: none;
-    justify-content: center;
-    align-items: center;
 }
 
 .myModal.active {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }

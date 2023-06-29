@@ -1,6 +1,9 @@
 .footer {
     display: flex;
     flex-direction: column-reverse;
+
+    position: relative;
+    z-index: 1;
 }
 
 .footerLeft {

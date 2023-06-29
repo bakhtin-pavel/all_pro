@@ -2,9 +2,9 @@ import React from 'react';
 
 import cl from './ApplicationInput.module.css';
 
-const ApplicationInput = React.forwardRef((props, ref) => {
+const ApplicationInput = ((props) => {
     return (
-        <input ref={ref} className={cl.applicationInput} {...props} />
+        <input className={cl.applicationInput} {...props} />
     );
 });
 
