@@ -80,13 +80,15 @@
     .appButton {
         width: 104px;
         height: 40px;
+
+        position: absolute;
         top: 38vh;
         right: 15px;
 
         font-size: 14px;
     }
 
-    .backFon {
+    .appButton .backFon {
         width: 92px;
         height: 26px;
 

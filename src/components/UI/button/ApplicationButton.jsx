@@ -12,18 +12,22 @@ const ApplicationButton = ({ onClick }) => {
 
     const size = useWindowSize()
 
-    const perehod = (size.innerHeight / 5) - 102
-    console.log(perehod)
-
     useEffect(() => {
 
+        if (size.innerWidth < 1025) return;
+
+        const perehod = (size.innerHeight / 5) - 102
+
         const updatePosition = () => {
+
             const scrollY = window.scrollY
+
             if (scrollY > perehod) {
                 !changed && setChanged(true)
             } else {
                 changed && setChanged(false)
             }
+
         }
 
         window.addEventListener('scroll', updatePosition);
