@@ -18,13 +18,15 @@ import plint3 from '../../media/images/plint_3.png';
 
 const ALPlinth = () => {
 
+    const sliderImages = [plint0, plint1, plint2, plint3]
+
+
     const [open, setOpen] = useState(false)
 
     const onClose = () => {
         setOpen(false)
     }
 
-    const sliderImages = [plint0, plint1, plint2, plint3]
 
     const slider = React.useRef(null);
 
@@ -61,6 +63,7 @@ const ALPlinth = () => {
                 </div>
 
                 <div className={cl.item}>
+
                     <div className={cl.itemImages}>
                         <Slider ref={slider} {...settings}>
                             {sliderImages.map((img) =>
@@ -69,10 +72,12 @@ const ALPlinth = () => {
                                 </div>
                             )}
                         </Slider>
+
                         <div className={cl.imageWrapper}>
                             <img src={itemImg} alt="Плинтус(объёмный)" />
                         </div>
                     </div>
+
                     <div className={cl.itemInfo}>
                         <h3>Al плинтуса</h3>
                         <p>это простое и практичное решение для оформления помещенияэто простое и практичное решение для оформления помещенияэто простое и практичное решение для оформления помещенияэто простое и практичное решение для оформления помещенияэто простое и практичное решение для оформления помещенияэто простое и практичное решение для оформления помещенияэто простое и практичное решение для оформления помещенияэто простое </p>

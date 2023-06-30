@@ -24,7 +24,7 @@ const Main = () => {
 
             <ALPlinth />
 
-            {/* <SpecOffers /> */}
+            <SpecOffers />
 
             <ALProInterior />
 

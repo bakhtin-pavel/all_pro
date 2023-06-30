@@ -6,8 +6,9 @@
     position: relative;
 }
 
+
 .lineLeft {
-    width: 845px;
+    width: 58.7vw;
     border-bottom: 6px solid #A1A6B0;
     position: absolute;
     top: 81px;
@@ -15,7 +16,7 @@
 }
 
 .lineRight {
-    width: calc(100% - 766px);
+    width: 47vw;
     height: 18.5px;
     border-left: 6px solid #A1A6B0;
     border-bottom: 6px solid #A1A6B0;
@@ -23,6 +24,7 @@
     top: 40px;
     right: 0;
 }
+
 
 .wrapper {
     margin: 0 auto;
@@ -32,17 +34,159 @@
 
 .specHead {
     margin-left: 0;
+    margin-bottom: 84px;
 }
 
 
-@media (min-width: 1441px) {
+.sliderItem {
+    margin: 0 auto;
+    width: 400px;
+    height: 320px;
+    border: 1px solid #000;
+}
 
-    .lineRight {
-        width: 47vw;
-    }
+.itemImg {
+    width: 100%;
+    height: 240px;
+}
+
+.itemImg img {
+    width: 100%;
+    height: 100%;
+}
+
+.itemName {
+    width: 100%;
+    height: 80px;
+    border-top: 1px solid #000;
+    padding: 25px 21px 18px 21px;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.nextArrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -33px;
+
+    width: 18px;
+    height: 18px;
+    background-image: url(../media/images/sliderBlueprintNext.svg);
+    background-size: cover;
+    cursor: pointer;
+}
+
+.prevArrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -33px;
+
+    width: 18px;
+    height: 18px;
+    background-image: url(../media/images/sliderBlueprintPrev.svg);
+    background-size: cover;
+    cursor: pointer;
+}
+
+
+@media (max-width: 1440px) {
 
     .lineLeft {
-        width: 58.7vw;
+        width: 845px;
+    }
+
+    .lineRight {
+        width: calc(100% - 766px);
+    }
+
+}
+
+
+@media (max-width: 1024px) {
+
+    .container {
+        height: 748px;
+        padding: 20px 0px 36px 0px;
     }
     
+    
+    .lineLeft {
+        width: 100%;
+        border-bottom: 4px solid #A1A6B0;
+        top: 48px;
+    }
+    
+    .lineRight {
+        width: calc(100% - 319px);
+        height: 14px;
+        border-left: 4px solid #A1A6B0;
+        border-bottom: 4px solid #A1A6B0;
+        top: 20px;
+    }
+    
+    
+    .wrapper {
+        padding: 0 57px;
+        height: 100%;
+    }
+    
+    .specHead {
+        margin-left: -42px;
+        margin-bottom: 44px;
+    }
+    
+    
+    .sliderItem {
+        width: 246px;
+        height: 197px;
+    }
+    
+    .itemImg {
+        width: 100%;
+        height: 148px;
+    }
+    
+    .itemImg img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .itemName {
+        height: 49px;
+        padding: 7px 13px 7px 13px;
+    
+        font-size: 14px;
+    }
+    
+    .nextArrow {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: -33px;
+    
+        width: 18px;
+        height: 18px;
+        background-image: url(../media/images/sliderBlueprintNext.svg);
+        background-size: cover;
+        cursor: pointer;
+    }
+    
+    .prevArrow {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: -33px;
+    
+        width: 18px;
+        height: 18px;
+        background-image: url(../media/images/sliderBlueprintPrev.svg);
+        background-size: cover;
+        cursor: pointer;
+    }
+
 }
