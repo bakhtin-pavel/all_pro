@@ -1,0 +1,119 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.backgroundImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.aboutHead {
+    color: #fff;
+    position: absolute;
+    top: 46px;
+}
+
+.lineHeadTop {
+    position: absolute;
+    top: 28px;
+    left: 0;
+
+    width: 438px;
+    height: 18.5px;
+    border-top: 6px solid #fff;
+    border-right: 6px solid #fff;
+}
+
+.lineHeadBottom {
+    position: absolute;
+    top: 98px;
+    left: 0;
+
+    width: 80px;
+    height: 18.5px;
+    border-bottom: 6px solid #fff;
+    border-right: 6px solid #fff;
+}
+
+.textBlock {
+    position: absolute;
+    top: 197px;
+    left: 80px;
+    width: 720px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.boldParagrath {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 26px;
+}
+
+.normalParagrath {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.normalParagrath span {
+    font-weight: 700;
+}
+
+
+
+@media (max-width: 1024px) {
+
+    .container {
+        height: auto;
+    }
+
+    .aboutHead {
+        top: 36px;
+    }
+
+    .lineHeadTop {
+        top: 27px;
+
+        width: 261px;
+        border-top: 4px solid #fff;
+        border-right: 4px solid #fff;
+    }
+
+    .lineHeadBottom {
+        top: 47px;
+
+        width: 93px;
+        height: 19px;
+        border-bottom: 4px solid #fff;
+        border-right: 4px solid #fff;
+    }
+
+    .textBlock {
+        position: static;
+        width: 100%;
+        padding: 20px 15px 36px 15px;
+    
+        gap: 17px;
+    }
+    
+    .boldParagrath {
+        color: #000;
+        font-size: 14px;
+        line-height: 17px;
+    }
+    
+    .normalParagrath {
+        color: #000;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+}
