@@ -1,11 +1,13 @@
 {
   "files": {
-    "main.css": "/all_pro/static/css/main.e245028e.css",
-    "main.js": "/all_pro/static/js/main.30da5ea9.js",
+    "main.css": "/all_pro/static/css/main.acaea05b.css",
+    "main.js": "/all_pro/static/js/main.f6b704d5.js",
     "static/media/plint_img.png": "/all_pro/static/media/plint_img.b713102337750ee3e4ca.png",
+    "static/media/about_production.png": "/all_pro/static/media/about_production.a050762ec609051bf35b.png",
     "static/media/MainSlider_Img.png": "/all_pro/static/media/MainSlider_Img.ddc2baf472507744d09f.png",
     "static/media/test.png": "/all_pro/static/media/test.ddc2baf472507744d09f.png",
     "static/media/about_background.png": "/all_pro/static/media/about_background.a22996204c7f8d40807f.png",
+    "static/media/about_production_m.png": "/all_pro/static/media/about_production_m.7acd2126f7b71635519d.png",
     "static/media/allprointerior_0.png": "/all_pro/static/media/allprointerior_0.82453bda52918434de2b.png",
     "static/media/allprointerior_1.png": "/all_pro/static/media/allprointerior_1.78901466d8a0725ac2ba.png",
     "static/media/mainSlider_imgMobile.png": "/all_pro/static/media/mainSlider_imgMobile.a9b47d495c9eba9231ac.png",
@@ -42,11 +44,11 @@
     "static/media/application_line_2_m.svg": "/all_pro/static/media/application_line_2_m.eee0bb429fb24ab695cab9706d0115da.svg",
     "static/media/application_line_m.svg": "/all_pro/static/media/application_line_m.b3c0e22a5e3563273d76d6a122f7c617.svg",
     "static/media/application_line_2.svg": "/all_pro/static/media/application_line_2.68d7ab50966b39ffb227e0b8a257e3b7.svg",
-    "main.e245028e.css.map": "/all_pro/static/css/main.e245028e.css.map",
-    "main.30da5ea9.js.map": "/all_pro/static/js/main.30da5ea9.js.map"
+    "main.acaea05b.css.map": "/all_pro/static/css/main.acaea05b.css.map",
+    "main.f6b704d5.js.map": "/all_pro/static/js/main.f6b704d5.js.map"
   },
   "entrypoints": [
-    "static/css/main.e245028e.css",
-    "static/js/main.30da5ea9.js"
+    "static/css/main.acaea05b.css",
+    "static/js/main.f6b704d5.js"
   ]
 }
