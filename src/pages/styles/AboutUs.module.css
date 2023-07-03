@@ -38,22 +38,27 @@
     border-right: 6px solid #fff;
 }
 
-.textBlock {
-    position: absolute;
-    top: 197px;
-    left: 80px;
-    width: 720px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 26px;
-}
-
 .boldParagrath {
+    position: absolute;
+    top: 160px;
+    left: 80px;
+
     color: #FFF;
     font-size: 24px;
     font-weight: 700;
     line-height: 26px;
+    /* white-space: pre; */
+}
+
+.textBlock {
+    position: absolute;
+    top: 212px;
+    left: 80px;
+    width: 680px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
 }
 
 .normalParagrath {
@@ -63,8 +68,19 @@
     line-height: 26px;
 }
 
-.normalParagrath span {
-    font-weight: 700;
+.production {
+    padding: 72px 0;
+    width: 100%;
+}
+
+.productionImg {
+    padding: 42px 80px 0 80px;
+}
+
+.productionImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 
@@ -96,16 +112,23 @@
         border-right: 4px solid #fff;
     }
 
+    .boldParagrath {
+        top: 127px;
+        left: 15px;
+
+        font-size: 14px;
+        line-height: 124%;
+    }
+
     .textBlock {
         position: static;
         width: 100%;
-        padding: 20px 15px 36px 15px;
+        padding: 20px 15px 0px 15px;
     
         gap: 17px;
     }
     
     .boldParagrath {
-        color: #000;
         font-size: 14px;
         line-height: 17px;
     }
@@ -114,6 +137,15 @@
         color: #000;
         font-size: 14px;
         line-height: 17px;
+    }
+
+    .production {
+        padding: 36px 0;
+        width: 100%;
+    }
+    
+    .productionImg {
+        padding: 20px 15px 0 15px;
     }
 
 }

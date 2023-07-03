@@ -6,10 +6,8 @@ import { NavLink, Link, useLocation } from 'react-router-dom'
 const Header = () => {
 
     const location = useLocation();
-    console.log(location.pathname);
 
     const isHomePage = location.pathname === '/';
-    console.log(isHomePage);
 
     const fixedHeader = {
         position: 'fixed'
