@@ -47,7 +47,6 @@
     font-size: 24px;
     font-weight: 700;
     line-height: 26px;
-    /* white-space: pre; */
 }
 
 .textBlock {
@@ -118,6 +117,7 @@
 
         font-size: 14px;
         line-height: 124%;
+        white-space: pre-wrap;
     }
 
     .textBlock {
@@ -126,11 +126,6 @@
         padding: 20px 15px 0px 15px;
     
         gap: 17px;
-    }
-    
-    .boldParagrath {
-        font-size: 14px;
-        line-height: 17px;
     }
     
     .normalParagrath {

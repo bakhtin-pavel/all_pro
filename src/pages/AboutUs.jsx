@@ -18,8 +18,7 @@ const AboutUs = () => {
                 <h2 className={cl.aboutHead}>О НАС</h2>
                 <div className={cl.lineHeadTop}></div>
                 <div className={cl.lineHeadBottom}></div>
-                <p className={cl.boldParagrath}>Alpro.
-                    Качество — это просто.</p>
+                <p className={cl.boldParagrath}>Alpro.{"\n"}Качество — это просто.</p>
                 <div className={cl.textBlock}>
                     <p className={cl.normalParagrath}>С 2021 года компания представляет на российском строительном рынке производство под собственной торговой маркой Alprо.</p>
                     <p className={cl.normalParagrath}>В интернет-магазине представлен широкий выбор алюминиевых плинтусов и межкомнатных дверей.</p>
