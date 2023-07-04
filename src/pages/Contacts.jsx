@@ -1,6 +1,7 @@
 import React from 'react';
 
 import cl from './styles/Contacts.module.css';
+import CooperationForm from '../components/CooperationForm';
 
 const Contacts = () => {
     const contactsLink = [cl.contactsTexts, cl.contactsLink].join(' ')
@@ -47,6 +48,8 @@ const Contacts = () => {
                 </div>
                 <div className={cl.cooperationDecor}></div>
             </section>
+
+            <CooperationForm />
 
         </>
     )

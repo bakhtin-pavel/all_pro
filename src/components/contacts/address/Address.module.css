@@ -1,0 +1,22 @@
+.address {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+}
+
+.address img {
+    margin-top: 5px;
+}
+
+.address p {
+    color: #FFF;
+    font-size: 14px;
+    line-height: 26px;
+}
+
+@media (min-width: 1025px) {
+    .address p {
+        font-size: 24px;
+        width: 236px;
+    }
+}

@@ -1,0 +1,18 @@
+.phone {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.phone a {
+    color: #FFF;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+@media (min-width: 1025px) {
+    .phone a {
+        font-size: 24px;
+    }
+}

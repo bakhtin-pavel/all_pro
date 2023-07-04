@@ -25,6 +25,10 @@
 .contacts {
     margin-top: 36px;
     padding-left: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 h4 {
@@ -33,43 +37,6 @@ h4 {
     font-weight: 700;
     line-height: 18px;
     text-transform: uppercase;
-}
-
-.contacts div {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.address {
-    gap: 20px;
-}
-
-.address p {
-    color: #FFF;
-    font-size: 14px;
-    line-height: 26px;
-}
-
-.phone {
-    gap: 18px;
-}
-
-.phone a {
-    color: #FFF;
-    font-size: 14px;
-    line-height: 18px;
-    text-transform: uppercase;
-}
-
-.email {
-    gap: 16px;
-}
-
-.email a {
-    color: #FFF;
-    font-size: 14px;
-    line-height: 18px;
 }
 
 
@@ -124,28 +91,14 @@ h4 {
         margin: 62px auto 0 0;
         padding-left: 10px;
         padding-right: 10px;
+
+        gap: 24px;
     }
 
-    .contacts div {
-        margin-top: 24px;
+    .contacts h4 {
+        margin-bottom: 16px;
     }
 
-    .contacts div.address {
-        margin-top: 40px;
-    }
-
-    .address p {
-        font-size: 24px;
-        width: 236px;
-    }
-
-    .phone a {
-        font-size: 24px;
-    }
-
-    .email a {
-        font-size: 24px;
-    }
 
     .social {
         grid-column: 1/2;

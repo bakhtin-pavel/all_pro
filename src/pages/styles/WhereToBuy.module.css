@@ -1,0 +1,32 @@
+.headContainer {
+    width: 100%;
+    padding: 43px 0 31px 0;
+
+    position: relative;
+}
+
+.headDecor {
+    position: absolute;
+    top: 77px;
+    right: 0;
+
+    width: calc(100% - 358px);
+    border-bottom: 6px solid #000;
+}
+
+
+
+@media (max-width: 1024px) {
+
+    .headContainer {
+        padding: 36px 0 20px 0;
+    }
+    
+    .headDecor {
+        top: 50px; 
+    
+        width: calc(100% - 141px);
+        border-bottom: 4px solid #000;
+    }
+    
+}

@@ -1,0 +1,17 @@
+.email {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+
+.email a {
+    color: #FFF;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+@media (min-width: 1025px) {
+    .email a {
+        font-size: 24px;
+    }
+}

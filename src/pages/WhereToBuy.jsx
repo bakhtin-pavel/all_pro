@@ -1,12 +1,21 @@
-import React from 'react'
-import test from '../components/media/images/test.png'
+import React from 'react';
+
+import cl from './styles/WhereToBuy.module.css';
+
+import ContactsData from '../components/pagesComponents/whereToBuyPage/ContactsData';
 
 const WhereToBuy = () => {
     return (
-        <div className='testDiv'>
-            Where to buy
-            <img src={test} alt='' />
-        </div>
+        <section>
+
+            <div className={cl.headContainer}>
+                <h2>Где купить</h2>
+                <div className={cl.headDecor}></div>
+            </div>
+
+            <ContactsData />
+
+        </section>
     )
 }
 
