@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/all_pro/static/css/main.5d5b8074.css",
-    "main.js": "/all_pro/static/js/main.77a0690a.js",
+    "main.css": "/all_pro/static/css/main.9529efd5.css",
+    "main.js": "/all_pro/static/js/main.5b58d9c9.js",
     "static/media/plint_img.png": "/all_pro/static/media/plint_img.b713102337750ee3e4ca.png",
     "static/media/about_production.png": "/all_pro/static/media/about_production.a050762ec609051bf35b.png",
     "static/media/MainSlider_Img.png": "/all_pro/static/media/MainSlider_Img.ddc2baf472507744d09f.png",
@@ -31,10 +31,7 @@
     "static/media/slick.svg": "/all_pro/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/all_pro/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/all_pro/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/address_icon.svg": "/all_pro/static/media/address_icon.d63710f35785e31592e618f793b9aaab.svg",
     "static/media/slick.woff": "/all_pro/static/media/slick.295183786cd8a1389865.woff",
-    "static/media/phone_icon.svg": "/all_pro/static/media/phone_icon.bc9dcff57394fd6352700318cf1e4b24.svg",
-    "static/media/email_icon.svg": "/all_pro/static/media/email_icon.6c31a99573c7235b36eec8728bd84f76.svg",
     "index.html": "/all_pro/index.html",
     "static/media/sliderBlueprintPrev.svg": "/all_pro/static/media/sliderBlueprintPrev.2a0b1c3d7111ff1f2389.svg",
     "static/media/sliderBlueprintNext.svg": "/all_pro/static/media/sliderBlueprintNext.40e6afb936f6235b7d41.svg",
@@ -44,11 +41,11 @@
     "static/media/application_line_2_m.svg": "/all_pro/static/media/application_line_2_m.eee0bb429fb24ab695cab9706d0115da.svg",
     "static/media/application_line_m.svg": "/all_pro/static/media/application_line_m.b3c0e22a5e3563273d76d6a122f7c617.svg",
     "static/media/application_line_2.svg": "/all_pro/static/media/application_line_2.68d7ab50966b39ffb227e0b8a257e3b7.svg",
-    "main.5d5b8074.css.map": "/all_pro/static/css/main.5d5b8074.css.map",
-    "main.77a0690a.js.map": "/all_pro/static/js/main.77a0690a.js.map"
+    "main.9529efd5.css.map": "/all_pro/static/css/main.9529efd5.css.map",
+    "main.5b58d9c9.js.map": "/all_pro/static/js/main.5b58d9c9.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d5b8074.css",
-    "static/js/main.77a0690a.js"
+    "static/css/main.9529efd5.css",
+    "static/js/main.5b58d9c9.js"
   ]
 }
