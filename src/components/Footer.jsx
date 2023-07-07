@@ -2,9 +2,6 @@ import React from 'react';
 
 import cl from './styles/Footer.module.css';
 
-
-
-
 import social_icon_0 from './media/images/social_icon_0.svg';
 import social_icon_1 from './media/images/social_icon_1.svg';
 import social_icon_2 from './media/images/social_icon_2.svg';
@@ -24,9 +21,9 @@ const Footer = () => {
                 </div>
                 <div className={cl.contacts}>
                     <h4>Контакты</h4>
-                    <Address />
-                    <Phone />
-                    <Email />
+                    <Address colorIcon='white' />
+                    <Phone colorIcon='white' />
+                    <Email colorIcon='white' />
                 </div>
                 <div className={cl.social}>
                     <h4>Социальные сети</h4>
