@@ -5,6 +5,7 @@
     border: none;
     font-family: 'Montserrat';
     font-style: normal;
+    color: black;
 }
 
 *,
@@ -39,6 +40,7 @@ ul li {
 
 button {
     cursor: pointer;
+    color: inherit;
 }
 
 /* reset end */
