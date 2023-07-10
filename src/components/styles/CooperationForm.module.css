@@ -33,6 +33,19 @@
     gap: 40px;
 }
 
+.politic {
+    color: #A1A6B0;
+    font-size: 21px;
+    line-height: normal;
+}
+
+.politic a {
+    color: #A1A6B0;
+    font-size: 21px;
+    line-height: normal;
+    text-decoration: underline #A1A6B0;
+}
+
 .submit {
     width: 180px;
     height: 40px;
@@ -65,6 +78,14 @@
     .form {
         align-items: center;
         gap: 33px;
+    }
+
+    .politic {
+        font-size: 12px;
+    }
+    
+    .politic a {
+        font-size: 12px;
     }
 
     .submit {

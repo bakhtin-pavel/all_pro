@@ -37,6 +37,7 @@ const CooperationForm = () => {
                         type='email'
                         placeholder='E-mail'
                     />
+                    <p className={cl.politic}>Нажимая кнопку Отправить, вы соглашаетесь с <a href="#s">политикой обработки персональных данных</a></p>
                     <button className={cl.submit}>Отправить</button>
                 </form>
             </div>

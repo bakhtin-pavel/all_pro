@@ -16,25 +16,6 @@
     text-transform: uppercase;
 }
 
-.appButtonChange {
-    width: 240px;
-    height: 56px;
-    border-radius: 2px;
-    background: #000;
-    border: none;
-    transition: all 0.5s;
-
-    position: fixed;
-    top: 90vh;
-    right: 0;
-    z-index: 1;
-
-    color: #D9D9D9;
-    font-size: 24px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
 .appButton::after {
     content: '';
     position: absolute;
@@ -69,8 +50,42 @@
     z-index: -2;
 }
 
+
+.appButtonChange {
+    width: 240px;
+    height: 56px;
+    border-radius: 2px;
+    background: #000;
+    border: none;
+    transition: all 0.5s;
+
+    position: fixed;
+    top: 90vh;
+    right: 0;
+    z-index: 1;
+
+    color: #D9D9D9;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
 .appButtonChange .backFon {
     display: none;
+}
+
+.appButtonChange:hover .backFon {
+    display: block;
+    width: 236px;
+    height: 52px;
+    border-radius: 2px;
+    border: 2px solid #A1A6B0;
+    background: transparent;
+
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: -2;
 }
 
 

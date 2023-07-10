@@ -35,13 +35,21 @@
     left: 53px;
 }
 
-.line_1 {
+.decor1 {
+    width: calc(100% - 203px);
+    height: 17px;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+
     position: absolute;
     top: 62px;
     right: 0;
 }
 
-.line_2 {
+.decor2 {
+    width: calc(100% - 280px);
+    border-bottom: 2px solid #000;
+
     position: absolute;
     top: 94px;
     right: 0;
@@ -56,16 +64,48 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 40px;
+    gap: 24px;
+}
+
+.politic {
+    color: #FFF;
+    font-size: 14px;
+    line-height: normal;
+    margin-top: -12px;
+}
+
+.politic a {
+    color: #FFF;
+    font-size: 14px;
+    line-height: normal;
+    text-decoration: underline white;
 }
 
 .submit {
+    position: relative;
     width: 160px;
     height: 40px;
     border-radius: 3px;
     background: #FFF;
 
     font-size: 21px;
+}
+
+.submit div {
+    display: none;
+}
+
+.submit:hover div {
+    display: block;
+    width: 154px;
+    height: 34px;
+    border-radius: 3px;
+    border: 3px solid #A1A6B0;
+    background: transparent;
+
+    position: absolute;
+    top: 3px;
+    left: 3px;
 }
 
 
@@ -103,11 +143,19 @@
         left: 7px;
     }
 
-    .line_1 {
+    .decor1 {
+        width: calc(100% - 106px);
+        height: 14px;
+        border-left: 4px solid #000;
+        border-bottom: 4px solid #000;
+
         top: 36px;
     }
 
-    .line_2 {
+    .decor2 {
+        width: calc(100% - 225px);
+        border-bottom: 4px solid #000;
+
         top: 64px;
     }
 
@@ -118,7 +166,16 @@
         margin-top: 32px;
 
         align-items: center;
-        gap: 20px;
+        gap: 12px;
+    }
+
+    .politic {
+        font-size: 12px;
+        margin-top: 0;
+    }
+
+    .politic a {
+        font-size: 12px;
     }
 
     .submit {
@@ -126,6 +183,11 @@
         height: 36px;
 
         font-size: 16px;
+    }
+    
+    .submit:hover div {
+        width: 156px;
+        height: 30px;
     }
 
 }

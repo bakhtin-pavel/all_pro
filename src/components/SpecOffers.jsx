@@ -58,73 +58,75 @@ const SpecOffers = () => {
             <div className={cl.wrapper}>
                 <h2 className={cl.specHead}>специальные предложения</h2>
 
-                <Slider ref={slider} {...settings}>
+                <div className={cl.sliderWrapper}>
+                    <Slider ref={slider} {...settings}>
 
-                    <div>
-                        <div className={cl.sliderItem}>
-                            <div className={cl.itemImg}>
-                                {size.innerWidth > 1024
-                                    ? <>
-                                        <img src={specImg_0} alt="Изображение" />
-                                    </>
-                                    : <>
-                                        <img src={specImg_0_m} alt="Изображение" />
-                                    </>
-                                }
+                        <div>
+                            <div className={cl.sliderItem}>
+                                <div className={cl.itemImg}>
+                                    {size.innerWidth > 1024
+                                        ? <>
+                                            <img src={specImg_0} alt="Изображение" />
+                                        </>
+                                        : <>
+                                            <img src={specImg_0_m} alt="Изображение" />
+                                        </>
+                                    }
+                                </div>
+                                <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
                             </div>
-                            <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
                         </div>
-                    </div>
 
-                    <div>
-                        <div className={cl.sliderItem}>
-                            <div className={cl.itemImg}>
-                                {size.innerWidth > 1024
-                                    ? <>
-                                        <img src={specImg_1} alt="Изображение" />
-                                    </>
-                                    : <>
-                                        <img src={specImg_1_m} alt="Изображение" />
-                                    </>
-                                }
+                        <div>
+                            <div className={cl.sliderItem}>
+                                <div className={cl.itemImg}>
+                                    {size.innerWidth > 1024
+                                        ? <>
+                                            <img src={specImg_1} alt="Изображение" />
+                                        </>
+                                        : <>
+                                            <img src={specImg_1_m} alt="Изображение" />
+                                        </>
+                                    }
+                                </div>
+                                <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
                             </div>
-                            <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
                         </div>
-                    </div>
 
-                    <div>
-                        <div className={cl.sliderItem}>
-                            <div className={cl.itemImg}>
-                                {size.innerWidth > 1024
-                                    ? <>
-                                        <img src={specImg_0} alt="Изображение" />
-                                    </>
-                                    : <>
-                                        <img src={specImg_0_m} alt="Изображение" />
-                                    </>
-                                }
+                        <div>
+                            <div className={cl.sliderItem}>
+                                <div className={cl.itemImg}>
+                                    {size.innerWidth > 1024
+                                        ? <>
+                                            <img src={specImg_0} alt="Изображение" />
+                                        </>
+                                        : <>
+                                            <img src={specImg_0_m} alt="Изображение" />
+                                        </>
+                                    }
+                                </div>
+                                <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
                             </div>
-                            <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
                         </div>
-                    </div>
 
-                    <div>
-                        <div className={cl.sliderItem}>
-                            <div className={cl.itemImg}>
-                                {size.innerWidth > 1024
-                                    ? <>
-                                        <img src={specImg_1} alt="Изображение" />
-                                    </>
-                                    : <>
-                                        <img src={specImg_1_m} alt="Изображение" />
-                                    </>
-                                }
+                        <div>
+                            <div className={cl.sliderItem}>
+                                <div className={cl.itemImg}>
+                                    {size.innerWidth > 1024
+                                        ? <>
+                                            <img src={specImg_1} alt="Изображение" />
+                                        </>
+                                        : <>
+                                            <img src={specImg_1_m} alt="Изображение" />
+                                        </>
+                                    }
+                                </div>
+                                <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
                             </div>
-                            <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
                         </div>
-                    </div>
 
-                </Slider>
+                    </Slider>
+                </div>
             </div>
         </section>
     )
