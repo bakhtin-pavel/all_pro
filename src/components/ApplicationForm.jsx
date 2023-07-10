@@ -10,8 +10,12 @@ import app_line_2_m from './media/images/application_line_2_m.svg';
 import ApplicationInput from './UI/input/ApplicationInput';
 import { useWindowSize } from '../hooks/useWindowSize';
 
-const ApplicationForm = ({ close }) => {
+const ApplicationForm = ({ close, visible }) => {
     const size = useWindowSize()
+
+    const closeButton = {
+        display: 'none'
+    }
 
     const [application, setApplication] = useState({ name: '', phone: '', email: '' })
 
@@ -32,7 +36,7 @@ const ApplicationForm = ({ close }) => {
     return (
         <div className={cl.container}>
 
-            <button onClick={() => {close()}}>
+            <button onClick={() => { close() }} style={visible ? null : closeButton}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M19.375 20L20 19.375L10.625 9.99998L20 0.625001L19.375 2.91632e-06L10 9.37498L0.625021 0L2.07568e-05 0.625001L9.375 9.99998L0 19.375L0.624998 20L10 10.625L19.375 20Z" fill="white" />
                 </svg>

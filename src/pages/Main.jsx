@@ -30,7 +30,7 @@ const Main = () => {
 
             <ApplicationButton onClick={() => setModal(true)} />
             <MyModal visible={modal} setVisible={setModal} modalContent={cl.modalContent}>
-                <ApplicationForm close={closeModal} />
+                <ApplicationForm close={closeModal} visible={modal} />
             </MyModal>
 
         </>
