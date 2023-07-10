@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 import cl from './styles/Installation.module.css';
 
+import testvideo from '../components/media/videos/testvideo.mp4';
+
 import DropDown from '../components/UI/dropdown/DropDown';
 
 const Installation = () => {
@@ -14,6 +16,7 @@ const Installation = () => {
 
     return (
         <div className={cl.container}>
+
             <h2>как устанавливать{"\n"}AL плинтус</h2>
             <div className={cl.headDecor}>
                 <div></div>
@@ -34,12 +37,16 @@ const Installation = () => {
                 </button>
                 <DropDown opened={open} onClose={onClose} className={cl.dropDownContainer}>
                     <div className={cl.dropDown}>
-                        <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
-                        <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
-                        <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
+                        <button className={cl.dropDownItem}>Теневой плинтус скрытого монтажа L под рассеиватель</button>
+                        <button className={cl.dropDownItem}>Теневой плинтус скрытого монтажа под рассеиватель</button>
+                        <button className={cl.dropDownItem}>Теневой плинтус скрытого монтажа</button>
+                        <button className={cl.dropDownItem}>Скрытый плинтус L</button>
                     </div>
                 </DropDown>
             </div>
+
+            <video src={testvideo} controls className={cl.video}></video>
+
         </div>
     )
 }
