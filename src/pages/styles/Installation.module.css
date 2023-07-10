@@ -176,6 +176,7 @@
         display: grid;
         grid-template-columns: 320px 1fr;
         grid-template-rows: 77px 360px 160px 1fr;
+        grid-gap: 0;
         grid-column-gap: 40px;
     }
 
