@@ -31,7 +31,7 @@ const ApplicationForm = ({ close, visible }) => {
 
             <button onClick={() => { close() }} style={visible ? null : closeButton}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.375 20L20 19.375L10.625 9.99998L20 0.625001L19.375 2.91632e-06L10 9.37498L0.625021 0L2.07568e-05 0.625001L9.375 9.99998L0 19.375L0.624998 20L10 10.625L19.375 20Z" fill="white" />
+                    <path fillRule="evenodd" clipRule="evenodd" d="M19.375 20L20 19.375L10.625 9.99998L20 0.625001L19.375 2.91632e-06L10 9.37498L0.625021 0L2.07568e-05 0.625001L9.375 9.99998L0 19.375L0.624998 20L10 10.625L19.375 20Z" fill="white" />
                 </svg>
             </button>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-const DropDown = ({ children, opened, onClose, className }) => {
+const DropDown = ({ children, opened, onClose, className, parentRef }) => {
     const dropdownRef = useRef(null)
 
     useEffect(() => {
@@ -8,7 +8,7 @@ const DropDown = ({ children, opened, onClose, className }) => {
 
         const handleClick = (e) => {
             if (!dropdownRef) return;
-            if (!dropdownRef.current.contains(e.target)) {
+            if (!dropdownRef.current.contains(e.target) && !parentRef.current.contains(e.target)) {
                 onClose()
             }
         }
@@ -17,7 +17,7 @@ const DropDown = ({ children, opened, onClose, className }) => {
 
         return () => document.removeEventListener('click', handleClick)
 
-    }, [opened, onClose])
+    }, [opened, onClose, parentRef])
 
     if (!opened) return null
 

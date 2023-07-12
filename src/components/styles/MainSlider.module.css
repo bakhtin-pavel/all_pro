@@ -5,11 +5,10 @@
     position: relative;
 }
 
-.sliderItem {
+.slideImg {
+    width: 100%;
     height: 100vh;
-    background-image: url(../media/images/MainSlider_Img.png);
-    background-size: cover;
-    background-position: bottom;
+    object-fit: cover;
 }
 
 .sliderCaption {
@@ -38,11 +37,8 @@
 
 @media (max-width: 1024px) {
 
-    .sliderItem {
-        height: 50vh;
-        background-image: url(../media/images/mainSlider_imgMobile.png);
-        background-size: cover;
-        background-position: bottom;
+    .slideImg {
+        height: 45vh;
     }
 
     .sliderCaption {

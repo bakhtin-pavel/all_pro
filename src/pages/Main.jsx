@@ -1,13 +1,14 @@
-import React, { useState } from 'react'
-import MainSlider from '../components/MainSlider'
-import ALPlinth from '../components/pagesComponents/mainPage/ALPlinth'
-import ALProInterior from '../components/pagesComponents/mainPage/ALProInterior'
-import ApplicationButton from '../components/UI/button/ApplicationButton'
-import MyModal from '../components/UI/modal/MyModal'
-import ApplicationForm from '../components/ApplicationForm'
+import React, { useState } from 'react';
 
-import cl from './styles/Main.module.css'
-import SpecOffers from '../components/SpecOffers'
+import cl from './styles/Main.module.css';
+
+import MainSlider from '../components/MainSlider';
+import ALPlinth from '../components/pagesComponents/mainPage/ALPlinth';
+import ALProInterior from '../components/pagesComponents/mainPage/ALProInterior';
+import ApplicationButton from '../components/UI/button/ApplicationButton';
+import MyModal from '../components/UI/modal/MyModal';
+import ApplicationForm from '../components/ApplicationForm';
+import SpecOffers from '../components/SpecOffers';
 
 const Main = () => {
 

@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import cl from './styles/MainSlider.module.css';
+
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import cl from './styles/MainSlider.module.css';
 import './styles/MainSlider.css';
 
+import axios from 'axios';
+
+
+
 const MainSlider = () => {
+
+    const [slides, setSlides] = useState([])
+
+    async function fetchBanners() {
+        const response = await axios.get('http://95.163.229.9:8005/v1/banners')
+        setSlides(response.data.data)
+    }
+
+    useEffect(() => {
+        fetchBanners()
+    }, [])
+
     const settings = {
         dots: true,
         infinite: true,
@@ -28,12 +46,9 @@ const MainSlider = () => {
     return (
         <div className={cl.sliderContainer}>
             <Slider {...settings}>
-                <div className={cl.sliderItem}>
-                </div>
-                <div className={cl.sliderItem}>
-                </div>
-                <div className={cl.sliderItem}>
-                </div>
+                {slides.map((slide) =>
+                    <img src={slide.image} alt={slide.title} key={slide.id} className={cl.slideImg} />
+                )}
             </Slider>
             <div className={cl.sliderCaption}>
                 <div className={cl.sliderCaption_1}>скрытые плинтуса</div>

@@ -66,8 +66,8 @@ const ALPlinth = () => {
 
                     <div className={cl.itemImages}>
                         <Slider ref={slider} {...settings}>
-                            {sliderImages.map((img) =>
-                                <div className={cl.sliderItem}>
+                            {sliderImages.map((img, index) =>
+                                <div className={cl.sliderItem} key={index}>
                                     <img src={img} alt="" />
                                 </div>
                             )}
