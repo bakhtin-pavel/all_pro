@@ -21,14 +21,14 @@
     .headContainer {
         padding: 36px 0 20px 0;
     }
-    
+
     .headDecor {
-        top: 50px; 
-    
+        top: 50px;
+
         width: calc(100% - 141px);
         border-bottom: 4px solid #000;
     }
-    
+
 }
 
 
@@ -88,7 +88,7 @@
 
     .itemConteiner {
         width: 100%;
-        height: 560px;
+        max-height: 500px;
         overflow-y: scroll;
 
         display: flex;
@@ -97,7 +97,11 @@
     }
 
     .itemConteiner::-webkit-scrollbar {
-        display: none;
+        width: 4px;
+    }
+
+    .itemConteiner::-webkit-scrollbar-thumb {
+        background: #7B7B7B;
     }
 
     .item {

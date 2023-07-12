@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import cl from './styles/Installation.module.css';
 
@@ -10,6 +10,7 @@ import DropDown from '../components/UI/dropdown/DropDown';
 const Installation = () => {
 
     const [open, setOpen] = useState(false)
+    const switchRef = useRef()
 
     const onClose = () => {
         setOpen(false)
@@ -27,7 +28,7 @@ const Installation = () => {
 
             <div>
                 <div className={cl.itemSwitchWrapper}>
-                    <button className={cl.itemSwitch} onClick={(e) => {
+                    <button ref={switchRef} className={cl.itemSwitch} onClick={(e) => {
                         e.stopPropagation()
                         setOpen(!open)
                     }}>
@@ -37,11 +38,15 @@ const Installation = () => {
                             <path d="M6.96582 11.9581V0.664307" stroke="black" stroke-width="2" />
                         </svg>
                     </button>
-                    <DropDown opened={open} onClose={onClose} className={cl.dropDownContainer}>
+                    <DropDown opened={open} onClose={onClose} className={cl.dropDownContainer} parentRef={switchRef}>
                         <div className={cl.dropDown}>
                             <button className={cl.dropDownItem}>Теневой плинтус скрытого монтажа L под рассеиватель</button>
                             <button className={cl.dropDownItem}>Теневой плинтус скрытого монтажа под рассеиватель</button>
                             <button className={cl.dropDownItem}>Теневой плинтус скрытого монтажа</button>
+                            <button className={cl.dropDownItem}>Скрытый плинтус L</button>
+                            <button className={cl.dropDownItem}>Скрытый плинтус L</button>
+                            <button className={cl.dropDownItem}>Скрытый плинтус L</button>
+                            <button className={cl.dropDownItem}>Скрытый плинтус L</button>
                             <button className={cl.dropDownItem}>Скрытый плинтус L</button>
                         </div>
                     </DropDown>

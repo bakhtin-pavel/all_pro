@@ -61,6 +61,8 @@
 }
 
 .dropDown {
+    max-height: 280px;
+    overflow-y: auto;
     width: 100%;
     padding: 15px;
     border-top: 2px solid #000;
@@ -68,6 +70,14 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.dropDown::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dropDown::-webkit-scrollbar-thumb {
+    background: #7B7B7B;
 }
 
 .dropDownItem {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import cl from './styles/ALPlinth.module.css';
 
@@ -22,6 +22,7 @@ const ALPlinth = () => {
 
 
     const [open, setOpen] = useState(false)
+    const switchRef = useRef()
 
     const onClose = () => {
         setOpen(false)
@@ -46,15 +47,19 @@ const ALPlinth = () => {
             <div className={cl.wrapper}>
 
                 <div className={cl.itemSwitchWrapper}>
-                    <button className={cl.itemSwitch} onClick={(e) => {
+                    <button ref={switchRef} className={cl.itemSwitch} onClick={(e) => {
                         e.stopPropagation()
                         setOpen(!open)
                     }}>
                         <p className={[cl.itemSwitchTextPlace, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L под рассеиватель</p>
                         <div className={cl.itemSwitchIcon}></div>
                     </button>
-                    <DropDown opened={open} onClose={onClose} className={cl.dropDownContainer}>
+                    <DropDown opened={open} onClose={onClose} className={cl.dropDownContainer} parentRef={switchRef}>
                         <div className={cl.dropDown}>
+                            <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
+                            <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
+                            <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
+                            <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
                             <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
                             <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>
                             <button className={[cl.dropDownItem, cl.itemSwitchText].join(' ')}>теневой плинтус скрытого монтажа L</button>

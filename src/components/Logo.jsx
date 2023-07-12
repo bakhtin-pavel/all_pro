@@ -1,6 +1,8 @@
-import React from 'react'
-import logoImg from './media/images/logo.png'
-import cl from './styles/Logo.module.css'
+import React from 'react';
+
+import logoImg from './media/images/logo.svg';
+
+import cl from './styles/Logo.module.css';
 
 const Logo = () => {
     return (

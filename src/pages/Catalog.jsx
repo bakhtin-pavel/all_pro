@@ -37,7 +37,19 @@ const Catalog = () => {
 
             <div className={cl.productContainer}>
                 <div className={cl.productCard}>
-                    <img src="" alt="" />
+                    {/* <div className={cl.productCardWrapper}> */}
+                        <img src="" alt="" />
+                        <h3>Al 13-7208 PANEL</h3>
+                        <div className={cl.cardDecor}></div>
+                        <ul className={cl.cardInfo}>
+                            <li>название</li>
+                            <li>размер</li>
+                            <li>цвет</li>
+                        </ul>
+                        <p className={cl.cardPrice}>1500₽</p>
+                    {/* </div> */}
+                </div>
+                <div className={cl.productCard}><img src="" alt="" />
                     <h3>Al 13-7208 PANEL</h3>
                     <div className={cl.cardDecor}></div>
                     <ul className={cl.cardInfo}>
@@ -47,11 +59,46 @@ const Catalog = () => {
                     </ul>
                     <p className={cl.cardPrice}>1500₽</p>
                 </div>
-                <div className={cl.productCard}></div>
-                <div className={cl.productCard}></div>
-                <div className={cl.productCard}></div>
-                <div className={cl.productCard}></div>
-                <div className={cl.productCard}></div>
+                <div className={cl.productCard}><img src="" alt="" />
+                    <h3>Al 13-7208 PANEL</h3>
+                    <div className={cl.cardDecor}></div>
+                    <ul className={cl.cardInfo}>
+                        <li>название</li>
+                        <li>размер</li>
+                        <li>цвет</li>
+                    </ul>
+                    <p className={cl.cardPrice}>1500₽</p>
+                </div>
+                <div className={cl.productCard}><img src="" alt="" />
+                    <h3>Al 13-7208 PANEL</h3>
+                    <div className={cl.cardDecor}></div>
+                    <ul className={cl.cardInfo}>
+                        <li>название</li>
+                        <li>размер</li>
+                        <li>цвет</li>
+                    </ul>
+                    <p className={cl.cardPrice}>1500₽</p>
+                </div>
+                <div className={cl.productCard}><img src="" alt="" />
+                    <h3>Al 13-7208 PANEL</h3>
+                    <div className={cl.cardDecor}></div>
+                    <ul className={cl.cardInfo}>
+                        <li>название</li>
+                        <li>размер</li>
+                        <li>цвет</li>
+                    </ul>
+                    <p className={cl.cardPrice}>1500₽</p>
+                </div>
+                <div className={cl.productCard}><img src="" alt="" />
+                    <h3>Al 13-7208 PANEL</h3>
+                    <div className={cl.cardDecor}></div>
+                    <ul className={cl.cardInfo}>
+                        <li>название</li>
+                        <li>размер</li>
+                        <li>цвет</li>
+                    </ul>
+                    <p className={cl.cardPrice}>1500₽</p>
+                </div>
             </div>
 
         </div>
