@@ -18,7 +18,6 @@ const MainSlider = () => {
     async function fetchBanners() {
         const response = await axios.get('http://95.163.229.9:8005/v1/banners')
         setSlides(response.data.data)
-        console.log(response)
     }
 
     useEffect(() => {

@@ -8,6 +8,7 @@ import AboutUs from './pages/AboutUs';
 import Catalog from './pages/Catalog';
 import WhereToBuy from './pages/WhereToBuy';
 import Contacts from './pages/Contacts'
+import ProductPlinth from './pages/ProductPlinth';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                     <Route path='installation' element={<Installation />} />
                     <Route path='aboutus' element={<AboutUs />} />
                     <Route path='catalog' element={<Catalog />} />
+                    <Route path='catalog/:id' element={<ProductPlinth />} />
                     <Route path='wheretobuy' element={<WhereToBuy />} />
                     <Route path='contacts' element={<Contacts />} />
                 </Route>

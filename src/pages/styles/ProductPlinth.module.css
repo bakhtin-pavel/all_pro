@@ -1,0 +1,332 @@
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 50px 80px;
+}
+
+.topBlock {
+    border-bottom: 1px solid #000;
+
+    display: flex;
+    gap: 40px;
+}
+
+
+/* Slider */
+.sliderContainer {
+    width: 680px;
+    height: 760px;
+}
+
+.slideImg {
+    width: 680px;
+    height: 680px;
+    object-fit: cover;
+}
+
+.myDots {
+    width: 100%;
+    height: 17px;
+    margin-top: 40px;
+
+    display: flex !important;
+    justify-content: center;
+    gap: 16px;
+}
+
+.myDots li {
+    width: 17px;
+    height: 17px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.50);
+}
+
+.dotsButton {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Slider End */
+
+
+.specification {
+    position: relative;
+
+    height: 760px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.head {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 42px;
+    text-transform: uppercase;
+}
+
+.decor {
+    margin-top: 13px;
+    width: 100%;
+    height: 13px;
+    background: #F0F0F0;
+}
+
+.name {
+    margin-top: -13px;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 37px;
+    text-transform: uppercase;
+}
+
+
+.colorAndSize {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.filterContainer {
+    position: relative;
+    width: 100%;
+}
+
+.filterType {
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    border: 1px solid #000;
+    padding-left: 10px;
+    background: rgba(217, 217, 217, 0.40);
+
+    position: relative;
+
+    font-size: 16px;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.dropDownContainer {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    z-index: 1;
+
+    max-height: 200px;
+    overflow-y: auto;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+    border: 1px solid #000;
+    border-top: none;
+    background: #FFF;
+    padding: 7px 12px 12px 12px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.dropDownContainer::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dropDownContainer::-webkit-scrollbar-thumb {
+    background: #7B7B7B;
+}
+
+.dropDownItem {
+    background: #FFF;
+    padding: 7px 0 5px 0;
+    border-bottom: 2px solid #D9D9D9;
+
+    font-size: 16px;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+
+.buttons {
+    margin-bottom: 80px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.button {
+    width: 240px;
+    height: 45px;
+}
+
+
+.price {
+    position: absolute;
+    bottom: 76px;
+    right: 0;
+
+    color: #A1A6B0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 34px;
+    text-transform: uppercase;
+}
+
+
+.info {
+    margin-top: 50px;
+}
+
+.info p {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+
+
+@media (max-width: 1260px) {
+
+    /* Slider */
+    .sliderContainer {
+        width: 480px;
+        height: 560px;
+    }
+
+    .slideImg {
+        width: 480px;
+        height: 480px;
+    }
+
+    /* Slider End */
+
+    .specification {
+        height: 660px;
+    }
+
+}
+
+
+
+@media (max-width: 1024px) {
+
+    .container {
+        width: 100%;
+        padding: 36px 15px;
+    }
+
+    .topBlock {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+
+    /* Slider */
+    .sliderContainer {
+        width: 100%;
+        height: auto;
+    }
+
+    .slideImg {
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+        object-position: bottom;
+    }
+
+    .myDots {
+        height: 10px;
+        margin-top: 8px;
+
+        gap: 8px;
+    }
+
+    .myDots li {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Slider End */
+
+
+    .specification {
+        height: auto;
+
+        gap: 50px;
+    }
+
+
+    .head {
+        font-size: 16px;
+        line-height: normal;
+        padding-right: 70px;
+    }
+
+    .decor {
+        margin-top: 8px;
+    }
+
+    .name {
+        margin-top: -8px;
+        font-size: 14px;
+        line-height: normal;
+    }
+
+
+    .colorAndSize {
+        gap: 12px;
+    }
+
+    .filterType {
+        padding-left: 12px;
+
+        font-size: 14px;
+    }
+
+    .dropDownContainer {
+        position: static;
+    }
+
+    .dropDownItem {
+        font-size: 14px;
+    }
+
+
+    .buttons {
+        margin-bottom: 20px;
+
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    .button {
+        width: 48%;
+        height: auto;
+    }
+
+
+    .price {
+        position: absolute;
+        bottom: calc(100% - 19px);
+        right: 0;
+
+        font-size: 16px;
+        line-height: normal;
+    }
+
+
+    .info {
+        margin-top: 20px;
+    }
+
+    .info p {
+        font-size: 14px;
+        line-height: 124%;
+    }
+
+}

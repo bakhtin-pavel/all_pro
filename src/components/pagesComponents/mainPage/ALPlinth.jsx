@@ -29,7 +29,7 @@ const ALPlinth = () => {
     }
 
 
-    const slider = React.useRef(null);
+    const slider = useRef(null);
 
     const settings = {
         dots: false,

@@ -2,6 +2,8 @@
     width: 100%;
     background: rgba(217, 217, 217, 0.40);
     padding: 48px 80px 0 80px;
+
+    position: relative;
 }
 
 .headers {
@@ -18,11 +20,115 @@
     color: black;
 }
 
+
+/* Filters */
 .filters {
     margin: 31px 0 40px 0;
     display: flex;
     justify-content: space-between;
 }
+
+.filterContainer {
+    position: relative;
+    width: 400px;
+}
+
+.filterType {
+    width: 400px;
+    height: 40px;
+    border-radius: 2px;
+    border: 1px solid #000;
+    padding-left: 10px;
+    background: transparent;
+
+    position: relative;
+
+    font-size: 16px;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.dropDownContainer {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+
+    max-height: 300px;
+    overflow-y: auto;
+    width: 400px;
+    border-radius: 0 0 2px 2px;
+    border: 1px solid #000;
+    border-top: none;
+    background: #FFF;
+    padding: 0 12px 12px 12px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.dropDownContainer::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dropDownContainer::-webkit-scrollbar-thumb {
+    background: #7B7B7B;
+}
+
+
+.filterItem {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    gap: 11px;
+}
+
+.filterItem label {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 2px solid #D9D9D9;
+    cursor: pointer;
+
+    position: relative;
+
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.customCheckbox {
+    position: relative;
+    z-index: -1;
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked+label::before {
+    content: '';
+    display: block;
+    width: 17px;
+    height: 19px;
+    position: absolute;
+    bottom: -2px;
+    right: -28px;
+    z-index: 1;
+    background-image: url(../../components/media/images/check.svg);
+    background-size: cover;
+}
+
+input[type="checkbox"]+label::after {
+    content: '';
+    display: block;
+    width: 13px;
+    height: 13px;
+    border: 2px solid #D9D9D9;
+    background: transparent;
+
+    position: absolute;
+    bottom: -2px;
+    right: -24px;
+}
+
+/* Filters End */
 
 
 
@@ -92,6 +198,74 @@
 }
 
 
+.load3D {
+    width: 240px;
+    height: 45px;
+    position: absolute;
+    bottom: 90px;
+    right: 80px;
+}
+
+.pagination {
+    padding: 115px 0 50px 0;
+
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.numPageButton {
+    background: transparent;
+
+    color: #A1A6B0;
+    font-size: 31.92px;
+    font-weight: 400;
+    line-height: 34.821px;
+    text-transform: lowercase;
+}
+
+.numPageButtonCurrent {
+    position: relative;
+    background: transparent;
+
+    color: #000;
+    font-size: 31.92px;
+    font-weight: 700;
+    line-height: 34.821px;
+    text-transform: lowercase;
+}
+
+.numPageButtonCurrent::before {
+    content: '';
+    display: block;
+    width: 104%;
+    height: 22px;
+    background: #A1A6B0;
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    z-index: -1;
+}
+
+
+
+@media (max-width: 1365px) {
+
+    .filterContainer {
+        width: 290px;
+    }
+
+    .filterType {
+        width: 290px;
+    }
+
+    .dropDownContainer {
+        width: 290px;
+    }
+
+}
+
+
 
 @media (max-width: 1024px) {
 
@@ -103,12 +277,33 @@
         gap: 12px;
     }
 
+    /* Filters */
     .filters {
         margin: 20px 0 12px 0;
         display: flex;
         flex-direction: column;
         gap: 12px;
     }
+
+    .filterContainer {
+        width: 100%;
+    }
+
+    .filterType {
+        width: 100%;
+        height: 33px;
+        padding-left: 12px;
+
+        font-size: 14px;
+    }
+
+    .dropDownContainer {
+        position: static;
+
+        width: 100%;
+    }
+
+    /* Filters End */
 
 
 
@@ -154,6 +349,35 @@
 
         font-size: 16px;
         text-align: right;
+    }
+
+
+    .load3D {
+        margin: 20px auto 0 auto;
+        width: 240px;
+        height: 45px;
+        position: static;
+    }
+
+
+    .pagination {
+        padding: 20px 0 36px 0;
+    }
+    
+    .numPageButton {
+        font-size: 14px;
+    }
+    
+    .numPageButtonCurrent {
+        font-size: 14px;
+    }
+    
+    .numPageButtonCurrent::before {
+        width: 100%;
+        height: 10px;
+        bottom: 10px;
+        left: 2px;
+        z-index: -1;
     }
 
 }
