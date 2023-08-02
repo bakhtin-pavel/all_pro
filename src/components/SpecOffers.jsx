@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import cl from './styles/SpecOffers.module.css';
 
-import specImg_0 from './media/images/specImg_0.png';
-import specImg_1 from './media/images/specImg_1.png';
-import specImg_0_m from './media/images/specImg_0_m.png';
-import specImg_1_m from './media/images/specImg_1_m.png';
+import axios from 'axios';
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
@@ -14,39 +11,63 @@ import SliderButtonNext from './UI/button/SliderButtonNext';
 import SliderButtonPrev from './UI/button/SliderButtonPrev';
 
 import { useWindowSize } from '../hooks/useWindowSize';
+import SliderButtonNextV from './UI/button/SliderButtonNextV';
+import SliderButtonPrevV from './UI/button/SliderButtonPrevV';
 
 const SpecOffers = () => {
 
     const size = useWindowSize()
 
-    const slider = React.useRef(null);
+    const [items, setItems] = useState([])
 
+    async function fetchProductsSpec() {
+        const response = await axios.get('http://95.163.229.9:8005/v1/products/special')
+        setItems(response.data.data)
+        console.log(response.data)
+    }
+
+    useEffect(() => {
+        fetchProductsSpec()
+    }, [])
+
+
+    useEffect(() => {
+        const slideItems = document.querySelectorAll('.heightSlide');
+        const slideHeights = Array.from(slideItems).map(item => item.offsetHeight);
+        const maxHeight = Math.max(...slideHeights);
+
+        slideItems.forEach(item => {
+            item.style.height = `${maxHeight}px`;
+        });
+    }, [items]);
+
+    const slider = React.useRef(null);
     const settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: Math.min(3, items ? items.length : 3),
         slidesToScroll: 1,
+        nextArrow: <SliderButtonNext classN={cl.nextArrow} slider={slider} />,
+        prevArrow: <SliderButtonPrev classN={cl.prevArrow} slider={slider} />,
         responsive: [
             {
                 breakpoint: 1400,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
+                    slidesToShow: Math.min(2, items ? items.length : 2),
                 }
             },
             {
-                breakpoint: 1000,
+                breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
                     vertical: true,
-                    verticalSwiping: false,
+                    verticalSwiping: true,
+                    slidesToShow: 3,
+                    nextArrow: <SliderButtonNextV classN={cl.nextArrow} slider={slider} />,
+                    prevArrow: <SliderButtonPrevV classN={cl.prevArrow} slider={slider} />,
                 }
             },
         ],
-        nextArrow: <SliderButtonNext classN={cl.nextArrow} slider={slider} />,
-        prevArrow: <SliderButtonPrev classN={cl.prevArrow} slider={slider} />,
     };
 
     return (
@@ -58,75 +79,53 @@ const SpecOffers = () => {
             <div className={cl.wrapper}>
                 <h2 className={cl.specHead}>специальные предложения</h2>
 
-                <div className={cl.sliderWrapper}>
-                    <Slider ref={slider} {...settings}>
-
-                        <div>
-                            <div className={cl.sliderItem}>
+                {size.innerWidth < 1025 && items.length <= 3
+                    ? <div className={cl.fewSlides}>
+                        {items && items.map((item) =>
+                            <div key={item.id} className={cl.sliderItem}>
                                 <div className={cl.itemImg}>
-                                    {size.innerWidth > 1024
-                                        ? <>
-                                            <img src={specImg_0} alt="Изображение" />
-                                        </>
-                                        : <>
-                                            <img src={specImg_0_m} alt="Изображение" />
-                                        </>
-                                    }
+                                    <img src={item.images[0]} alt="Изображение" />
                                 </div>
-                                <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div className={cl.sliderItem}>
-                                <div className={cl.itemImg}>
-                                    {size.innerWidth > 1024
-                                        ? <>
-                                            <img src={specImg_1} alt="Изображение" />
-                                        </>
-                                        : <>
-                                            <img src={specImg_1_m} alt="Изображение" />
-                                        </>
-                                    }
+                                <div className={cl.itemInfo}>
+                                    <div>
+                                        <p>{item.name}</p>
+                                        <p>{item.vendor_code}</p>
+                                    </div>
+                                    <div className={cl.itemInfoDecor}>
+                                        <p>-{item.discount}%</p>
+                                        <div className={cl.itemInfoDecor1}></div>
+                                        <div className={cl.itemInfoDecor2}></div>
+                                    </div>
                                 </div>
-                                <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
                             </div>
-                        </div>
-
-                        <div>
-                            <div className={cl.sliderItem}>
-                                <div className={cl.itemImg}>
-                                    {size.innerWidth > 1024
-                                        ? <>
-                                            <img src={specImg_0} alt="Изображение" />
-                                        </>
-                                        : <>
-                                            <img src={specImg_0_m} alt="Изображение" />
-                                        </>
-                                    }
+                        )}
+                    </div>
+                    : <div className={cl.sliderWrapper}>
+                        <Slider ref={slider} {...settings}>
+                            {items && items.map((item) =>
+                                <div key={item.id} className='heightSlide'>
+                                    <div className={cl.sliderItem}>
+                                        <div className={cl.itemImg}>
+                                            <img src={item.images[0]} alt="Изображение" />
+                                        </div>
+                                        <div className={cl.itemInfo}>
+                                            <div>
+                                                <p>{item.name}</p>
+                                                <p>{item.vendor_code}</p>
+                                            </div>
+                                            <div className={cl.itemInfoDecor}>
+                                                <p>-{item.discount}%</p>
+                                                <div className={cl.itemInfoDecor1}></div>
+                                                <div className={cl.itemInfoDecor2}></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
-                            </div>
-                        </div>
+                            )}
+                        </Slider>
+                    </div>
+                }
 
-                        <div>
-                            <div className={cl.sliderItem}>
-                                <div className={cl.itemImg}>
-                                    {size.innerWidth > 1024
-                                        ? <>
-                                            <img src={specImg_1} alt="Изображение" />
-                                        </>
-                                        : <>
-                                            <img src={specImg_1_m} alt="Изображение" />
-                                        </>
-                                    }
-                                </div>
-                                <div className={cl.itemName}>Теневой плинтус<br />скрытого монтажа</div>
-                            </div>
-                        </div>
-
-                    </Slider>
-                </div>
             </div>
         </section>
     )

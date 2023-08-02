@@ -1,6 +1,5 @@
 .container {
     width: 100%;
-    height: 560px;
     background: #F0F0F0;
     padding: 30px 0px 80px 0px;
     position: relative;
@@ -41,8 +40,11 @@
 .sliderItem {
     margin: 0 auto;
     width: 400px;
-    height: 320px;
+    height: 100%;
     border: 1px solid #000;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .itemImg {
@@ -53,18 +55,49 @@
 .itemImg img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
-.itemName {
+.itemInfo {
     width: 100%;
-    height: 80px;
     border-top: 1px solid #000;
-    padding: 25px 21px 18px 21px;
+    padding: 24px 0 19px 21px;
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 
     font-size: 16px;
     font-weight: 500;
     line-height: 18px;
     text-transform: uppercase;
+}
+
+.itemInfoDecor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.itemInfoDecor p {
+    margin-bottom: -5px;
+    padding-right: 21px;
+}
+
+.itemInfoDecor1 {
+    width: 64px;
+    height: 11px;
+    background: transparent;
+    border-bottom: 2px solid #A1A6B0;
+    border-left: 2px solid #A1A6B0;
+}
+
+.itemInfoDecor2 {
+    margin-top: 4px;
+    width: 40px;
+    border-bottom: 2px solid #A1A6B0;
 }
 
 .nextArrow {
@@ -73,11 +106,21 @@
     top: 50%;
     right: -33px;
 
-    width: 18px;
-    height: 18px;
-    background-image: url(../media/images/sliderBlueprintNext.svg);
-    background-size: cover;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
+}
+
+.nextArrow svg path {
+    stroke: rgba(161, 166, 176, 1);
+}
+
+.nextArrow:hover svg path {
+    stroke: #000;
+}
+
+.nextArrow:active svg {
+    transform: scale(0.8);
 }
 
 .prevArrow {
@@ -86,11 +129,21 @@
     top: 50%;
     left: -33px;
 
-    width: 18px;
-    height: 18px;
-    background-image: url(../media/images/sliderBlueprintPrev.svg);
-    background-size: cover;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
+}
+
+.prevArrow svg path {
+    stroke: rgba(161, 166, 176, 1);
+}
+
+.prevArrow:hover svg path {
+    stroke: #000;
+}
+
+.prevArrow:active svg {
+    transform: scale(0.8);
 }
 
 
@@ -110,7 +163,6 @@
 @media (max-width: 1024px) {
 
     .container {
-        height: 748px;
         padding: 20px 0px 36px 0px;
     }
 
@@ -141,48 +193,43 @@
 
 
     .sliderWrapper {
-        width: 250px;
+        max-width: 400px;
+        padding: 0 15px;
         margin: 0 auto;
     }
 
+    .fewSlides {
+        max-width: 400px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
     .sliderItem {
-        width: 246px;
-        height: 197px;
+        width: 100%;
     }
 
     .itemImg {
-        width: 100%;
-        height: 148px;
+        max-height: 200px;
     }
 
-    .itemImg img {
-        width: 100%;
-        height: 100%;
-    }
-
-    .itemName {
-        height: 49px;
-        padding: 7px 13px 7px 13px;
+    .itemInfo {
+        padding: 6px 0 13px 6px;
+        gap: 10px;
 
         font-size: 14px;
     }
 
     .nextArrow {
         top: 55%;
-        right: -20px;
-
-        width: 16px;
-        height: 16px;
-        background-image: url(../media/images/sliderNext.svg);
+        right: -24px;
     }
 
     .prevArrow {
-        top: 50%;
+        top: 45%;
         left: calc(100% + 4px);
-
-        width: 16px;
-        height: 16px;
-        background-image: url(../media/images/sliderPrev.svg);
     }
 
 }

@@ -47,7 +47,9 @@ const MainSlider = () => {
         <div className={cl.sliderContainer}>
             <Slider {...settings}>
                 {slides.map((slide) =>
-                    <img src={slide.image} alt={slide.title} key={slide.id} className={cl.slideImg} />
+                    <div key={slide.id} className={cl.slideImg}>
+                        <img src={slide.image} alt='Изображение' />
+                    </div>
                 )}
             </Slider>
             <div className={cl.sliderCaption}>

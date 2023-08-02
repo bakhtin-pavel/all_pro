@@ -1,10 +1,10 @@
-import React, { useRef } from 'react';
-
+import React, { useRef, useState, useEffect } from 'react';
 import cl from './styles/WhereToBuy.module.css';
 
-// import ContactsData from '../components/pagesComponents/whereToBuyPage/ContactsData';
+import axios from 'axios';
 
-import { YMaps, Map, Placemark, SearchControl } from '@pbe/react-yandex-maps';
+import { YMaps, Placemark, SearchControl } from '@pbe/react-yandex-maps';
+import { Map as Mapi } from '@pbe/react-yandex-maps';
 
 import Address from '../components/contacts/address/Address';
 import Email from '../components/contacts/email/Email';
@@ -16,12 +16,44 @@ import { useWindowSize } from '../hooks/useWindowSize';
 const WhereToBuy = () => {
 
     const size = useWindowSize();
+    const [item, setItem] = useState([])
 
-    const scrollRef = useRef(null);
+    async function fetchAddress() {
+        const response = await axios.get('http://95.163.229.9:8005/v1/addresses')
+        setItem(response.data.data)
+    }
 
-    const scrollToElement = () => {
-        scrollRef.current.scrollIntoView({ block: "end", behavior: "smooth" });
-    };
+    useEffect(() => {
+        fetchAddress()
+    }, [])
+
+    const itemsRef = useRef(null);
+    const mapRef = useRef()
+    let highlightOff
+
+    function scrollToId(item) {
+        window.scrollBy(0, 0.1)
+        mapRef.current.setZoom(15)
+        mapRef.current.setCenter([item.coordinate_x, item.coordinate_y])
+        if (highlightOff) {
+            highlightOff.classList.remove(cl.itemActive)
+        }
+        const map = getMap();
+        const node = map.get(item.id);
+        highlightOff = node
+        node.scrollIntoView({
+            behavior: 'smooth',
+            block: 'end',
+        });
+        node.classList.add(cl.itemActive)
+    }
+
+    function getMap() {
+        if (!itemsRef.current) {
+            itemsRef.current = new Map();
+        }
+        return itemsRef.current;
+    }
 
     return (
         <section>
@@ -31,194 +63,110 @@ const WhereToBuy = () => {
                 <div className={cl.headDecor}></div>
             </div>
 
-            <YMaps
-                query={{ apikey: '32fa1f28-2d0d-4abf-89a0-01759ef743c2', referer: 'Key #1' }}
-            >
-                <Map
-                    defaultState={{
-                        center: [54.975922, 73.324444],
-                        zoom: 15,
-                        controls: ["zoomControl"],
-                    }}
-                    modules={["control.ZoomControl"]}
-                    width='100%'
-                    height='500px'
+            <div className={cl.mapContainer}>
+                <YMaps
+                    query={{ apikey: '32fa1f28-2d0d-4abf-89a0-01759ef743c2', referer: 'Key #1' }}
                 >
-                    <Placemark
-                        defaultGeometry={[54.975922, 73.324444]}
-                        properties={
-                            {
-                                balloonContent: 'Контент',
-                            }}
-                        onClick={scrollToElement}
-                    />
-                    <SearchControl
-                        options={{ float: "left", provider: 'yandex#search' }}
-                    />
-                </Map>
-            </YMaps>
+                    <Mapi
+                        instanceRef={mapRef}
+                        defaultState={{
+                            center: [54.975922, 73.324444],
+                            zoom: 11,
+                            controls: ["zoomControl"],
+                        }}
+                        modules={["control.ZoomControl"]}
+                        width='100%'
+                        height='100%'
+                    >
+                        {item.map((item) =>
+                            <Placemark
+                                key={item.id}
+                                defaultGeometry={[item.coordinate_x, item.coordinate_y]}
+                                properties={
+                                    {
+                                        balloonContentHeader: item.name,
+                                        balloonContentBody: item.address,
+                                    }}
+                                onClick={() => scrollToId(item)}
+                            />
+                        )}
+                        <SearchControl
+                            options={{ float: "left", provider: 'yandex#search' }}
+                        />
+                    </Mapi>
+                </YMaps>
+            </div>
 
             <div className={cl.container}>
                 {size.innerWidth < 1025
                     ? <>
-                        <div className={cl.item}>
-                            <div className={cl.itemBlock}>
-                                <div className={cl.alpro}>
-                                    <svg width="18" height="18" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
-                                    </svg>
-                                    <p>Alpro</p>
+                        <div className={cl.itemConteiner}>
+                            {item.map((item) =>
+                                <div
+                                    key={item.id}
+                                    className={cl.item}
+                                    ref={(node) => {
+                                        const map = getMap();
+                                        if (node) {
+                                            map.set(item.id, node);
+                                        } else {
+                                            map.delete(item.id);
+                                        }
+                                    }}
+                                >
+                                    <div className={cl.itemBlock}>
+                                        <div className={cl.alpro}>
+                                            <svg width="18" height="18" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
+                                            </svg>
+                                            <p>{item.name}</p>
+                                        </div>
+                                        <Address colorIcon='black' colorText='black'>{item.address}</Address>
+                                        <Phone colorIcon='black' colorText='black'>{item.phone}</Phone>
+                                        <Email colorIcon='black' colorText='black'>{item.email}</Email>
+                                    </div>
+                                    <div className={cl.itemDecor}></div>
                                 </div>
-                                <Address colorIcon='black' colorText='black' />
-                                <Phone colorIcon='black' colorText='black' />
-                                <Email colorIcon='black' colorText='black' />
-                            </div>
+                            )}
                         </div>
                     </>
                     : <>
                         <div className={cl.itemConteiner}>
-                            <div className={cl.item}>
-                                <div className={cl.itemBlock}>
-                                    <div className={cl.alpro}>
-                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
-                                        </svg>
-                                        <p>Alpro</p>
+                            {item.map((item) =>
+                                <div
+                                    key={item.id}
+                                    className={cl.item}
+                                    ref={(node) => {
+                                        const map = getMap();
+                                        if (node) {
+                                            map.set(item.id, node);
+                                        } else {
+                                            map.delete(item.id);
+                                        }
+                                    }}
+                                >
+                                    <div className={cl.itemBlock}>
+                                        <div className={cl.alpro}>
+                                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
+                                            </svg>
+                                            <p>{item.name}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className={cl.itemBlock}>
-                                    <Address colorIcon='black' colorText='black' />
-                                </div>
-                                <div className={[cl.itemBlock, cl.phone_email].join(' ')}>
-                                    <Phone colorIcon='black' colorText='black' />
-                                    <Email colorIcon='black' colorText='black' />
-                                </div>
-                            </div>
-                            <div className={cl.item}>
-                                <div className={cl.itemBlock}>
-                                    <div className={cl.alpro}>
-                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
-                                        </svg>
-                                        <p>Alpro</p>
+                                    <div className={cl.itemBlock}>
+                                        <Address colorIcon='black' colorText='black'>{item.address}</Address>
                                     </div>
-                                </div>
-                                <div className={cl.itemBlock}>
-                                    <Address colorIcon='black' colorText='black' />
-                                </div>
-                                <div className={[cl.itemBlock, cl.phone_email].join(' ')}>
-                                    <Phone colorIcon='black' colorText='black' />
-                                    <Email colorIcon='black' colorText='black' />
-                                </div>
-                            </div>
-                            <div className={cl.item}>
-                                <div className={cl.itemBlock}>
-                                    <div className={cl.alpro}>
-                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
-                                        </svg>
-                                        <p>Alpro</p>
+                                    <div className={cl.itemBlock}>
+                                        <Phone colorIcon='black' colorText='black' phone={item.phone}>{item.phone}</Phone>
+                                        <Email colorIcon='black' colorText='black' email={item.email}>{item.email}</Email>
                                     </div>
+                                    <div className={cl.itemDecor}></div>
                                 </div>
-                                <div className={cl.itemBlock}>
-                                    <Address colorIcon='black' colorText='black' />
-                                </div>
-                                <div className={[cl.itemBlock, cl.phone_email].join(' ')}>
-                                    <Phone colorIcon='black' colorText='black' />
-                                    <Email colorIcon='black' colorText='black' />
-                                </div>
-                            </div>
-                            <div className={cl.item}>
-                                <div className={cl.itemBlock}>
-                                    <div className={cl.alpro}>
-                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
-                                        </svg>
-                                        <p>Alpro</p>
-                                    </div>
-                                </div>
-                                <div className={cl.itemBlock}>
-                                    <Address colorIcon='black' colorText='black' />
-                                </div>
-                                <div className={[cl.itemBlock, cl.phone_email].join(' ')}>
-                                    <Phone colorIcon='black' colorText='black' />
-                                    <Email colorIcon='black' colorText='black' />
-                                </div>
-                            </div>
-                            <div className={cl.item} ref={scrollRef}>
-                                <div className={cl.itemBlock}>
-                                    <div className={cl.alpro}>
-                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
-                                        </svg>
-                                        <p>Alpro</p>
-                                    </div>
-                                </div>
-                                <div className={cl.itemBlock}>
-                                    <Address colorIcon='black' colorText='black' />
-                                </div>
-                                <div className={[cl.itemBlock, cl.phone_email].join(' ')}>
-                                    <Phone colorIcon='black' colorText='black' />
-                                    <Email colorIcon='black' colorText='black' />
-                                </div>
-                            </div>
-                            <div className={cl.item}>
-                                <div className={cl.itemBlock}>
-                                    <div className={cl.alpro}>
-                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
-                                        </svg>
-                                        <p>Alpro</p>
-                                    </div>
-                                </div>
-                                <div className={cl.itemBlock}>
-                                    <Address colorIcon='black' colorText='black' />
-                                </div>
-                                <div className={[cl.itemBlock, cl.phone_email].join(' ')}>
-                                    <Phone colorIcon='black' colorText='black' />
-                                    <Email colorIcon='black' colorText='black' />
-                                </div>
-                            </div>
-                            <div className={cl.item}>
-                                <div className={cl.itemBlock}>
-                                    <div className={cl.alpro}>
-                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
-                                        </svg>
-                                        <p>Alpro</p>
-                                    </div>
-                                </div>
-                                <div className={cl.itemBlock}>
-                                    <Address colorIcon='black' colorText='black' />
-                                </div>
-                                <div className={[cl.itemBlock, cl.phone_email].join(' ')}>
-                                    <Phone colorIcon='black' colorText='black' />
-                                    <Email colorIcon='black' colorText='black' />
-                                </div>
-                            </div>
-                            <div className={cl.item}>
-                                <div className={cl.itemBlock}>
-                                    <div className={cl.alpro}>
-                                        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <circle id="Ellipse 7" cx="14" cy="14" r="14" fill="black" />
-                                        </svg>
-                                        <p>Alpro</p>
-                                    </div>
-                                </div>
-                                <div className={cl.itemBlock}>
-                                    <Address colorIcon='black' colorText='black' />
-                                </div>
-                                <div className={[cl.itemBlock, cl.phone_email].join(' ')}>
-                                    <Phone colorIcon='black' colorText='black' />
-                                    <Email colorIcon='black' colorText='black' />
-                                </div>
-                            </div>
+                            )}
                         </div>
                     </>
                 }
             </div>
-
-            {/* <ContactsData /> */}
 
         </section>
     )

@@ -1,0 +1,21 @@
+.dropDown-enter {
+    max-height: 0;
+}
+
+.dropDown-enter-active {
+    max-height: 300px;
+    transition: all 230ms linear;
+}
+
+.dropDown-enter-done {
+    max-height: 300px;
+}
+
+.dropDown-exit {
+    max-height: 300px;
+}
+
+.dropDown-exit-active {
+    max-height: 0;
+    transition: all 230ms linear;
+}

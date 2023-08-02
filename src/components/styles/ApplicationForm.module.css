@@ -6,6 +6,7 @@
 
     padding: 57px 80px 40px 80px;
     position: relative;
+    flex-shrink: 0;
 }
 
 .container>button {
@@ -64,14 +65,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 24px;
+    gap: 20px;
 }
 
 .politic {
     color: #FFF;
     font-size: 14px;
     line-height: normal;
-    margin-top: -12px;
+    margin-top: -10px;
 }
 
 .politic a {
@@ -79,6 +80,15 @@
     font-size: 14px;
     line-height: normal;
     text-decoration: underline white;
+}
+
+.errorText {
+    margin-top: -10px;
+    margin-bottom: -10px;
+
+    color: #000;
+    font-size: 18px;
+    line-height: normal;
 }
 
 .submit {
@@ -184,7 +194,7 @@
 
         font-size: 16px;
     }
-    
+
     .submit:hover div {
         width: 156px;
         height: 30px;

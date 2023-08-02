@@ -1,11 +1,11 @@
 .address {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 22px;
 }
 
 .address svg {
-    margin-top: 5px;
+    flex-shrink: 0;
 }
 
 .address p {
@@ -16,7 +16,7 @@
 
 @media (min-width: 1025px) {
     .address p {
-        font-size: 24px;
-        width: 236px;
+        font-size: 20px;
+        max-width: 275px;
     }
 }

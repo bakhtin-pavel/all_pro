@@ -1,26 +1,36 @@
 import React, { useState } from 'react';
 
 import cl from './styles/ApplicationForm.module.css';
+import politic_doc from './media/documents/politic.pdf';
+
+import axios from 'axios';
 
 import ApplicationInput from './UI/input/ApplicationInput';
 
 const ApplicationForm = ({ close, visible }) => {
 
     const [application, setApplication] = useState({ name: '', phone: '', email: '' })
+    const [errorCheck, setErrorCheck] = useState('')
 
-    const addNewApplication = (e) => {
+    async function submitApplication(e) {
         e.preventDefault();
 
-        const newApplication = {
-            ...application,
-            id: Date.now()
-        };
-
-        console.log(newApplication)
-
-        close()
-        setApplication({ name: '', phone: '', email: '' });
-    };
+        await axios.post('http://95.163.229.9:8005/v1/feedback', {
+            email: application.email,
+            phone: application.phone,
+            username: application.name,
+        })
+            .then(function (response) {
+                console.log(response);
+                close()
+                setApplication({ name: '', phone: '', email: '' });
+                setErrorCheck('')
+            })
+            .catch(function (error) {
+                console.log(error);
+                setErrorCheck(error.response.data.data.message.slice(0, -1))
+            });
+    }
 
     const closeButton = {
         display: 'none'
@@ -40,7 +50,7 @@ const ApplicationForm = ({ close, visible }) => {
             <div className={cl.decor1}></div>
             <div className={cl.decor2}></div>
 
-            <form className={cl.form}>
+            <form className={cl.form} onSubmit={submitApplication}>
                 <ApplicationInput
                     value={application.name}
                     onChange={e => setApplication({ ...application, name: e.target.value })}
@@ -59,8 +69,9 @@ const ApplicationForm = ({ close, visible }) => {
                     type='email'
                     placeholder='E-mail'
                 />
-                <p className={cl.politic}>Нажимая кнопку Отправить, вы соглашаетесь с <a href="#s">политикой обработки персональных данных</a></p>
-                <button className={cl.submit} onClick={addNewApplication}>Отправить<div></div></button>
+                <p className={cl.politic}>Нажимая кнопку Отправить, вы соглашаетесь с <a href={politic_doc} target='_blank' rel="noreferrer">политикой обработки персональных данных</a></p>
+                {errorCheck && <p className={cl.errorText}>{errorCheck}!</p>}
+                <button type='submit' className={cl.submit}>Отправить<div></div></button>
             </form>
 
         </div>

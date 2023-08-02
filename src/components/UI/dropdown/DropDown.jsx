@@ -1,4 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react';
+
+import './DropDown.css';
+import { CSSTransition } from 'react-transition-group';
 
 const DropDown = ({ children, opened, onClose, className, parentRef }) => {
     const dropdownRef = useRef(null)
@@ -19,12 +22,18 @@ const DropDown = ({ children, opened, onClose, className, parentRef }) => {
 
     }, [opened, onClose, parentRef])
 
-    if (!opened) return null
-
     return (
-        <div ref={dropdownRef} className={className}>
-            {children}
-        </div>
+        <CSSTransition
+            in={opened}
+            timeout={230}
+            classNames='dropDown'
+            unmountOnExit
+        >
+            <div ref={dropdownRef} className={className}>
+                {children}
+            </div>
+        </CSSTransition>
+
     )
 }
 

@@ -44,13 +44,3 @@ const ApplicationButton = ({ onClick }) => {
 }
 
 export default ApplicationButton
-
-
-
-// const appButChange = () => {
-    //     appButton.push(cl.change)
-    // }
-
-    // const appButChBack = () => {
-    //     appButton.pop()
-    // }

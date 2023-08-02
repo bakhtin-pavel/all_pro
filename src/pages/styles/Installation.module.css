@@ -1,4 +1,5 @@
 .container {
+    margin-top: 88px;
     width: 100%;
     padding: 36px 15px 20px 15px;
 
@@ -61,15 +62,14 @@
 }
 
 .dropDown {
-    max-height: 280px;
     overflow-y: auto;
     width: 100%;
-    padding: 15px;
+    padding: 12px 0;
     border-top: 2px solid #000;
 
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 .dropDown::-webkit-scrollbar {
@@ -82,12 +82,13 @@
 
 .dropDownItem {
     background: transparent;
-    padding: 0 0 5px 0;
-    border-bottom: 2px solid #D9D9D9;
+    padding: 5px 15px;
+    border-bottom: 2px solid #F0F0F0;
 
     font-size: 14px;
     line-height: 16px;
     text-align: left;
+    text-transform: uppercase;
 }
 
 
@@ -95,6 +96,24 @@
 .video {
     border-radius: 2px;
     border: 2px solid #000;
+}
+
+.videoEnter {
+    opacity: 0;
+}
+
+.videoEnterActive {
+    opacity: 1;
+    transition: all 300ms ease-in;
+}
+
+.videoExit {
+    opacity: 1;
+}
+
+.videoExitActive {
+    opacity: 0;
+    transition: all 300ms ease-out;
 }
 
 
@@ -111,6 +130,24 @@
     height: 100%;
     object-fit: cover;
     object-position: bottom;
+}
+
+.imgEnter {
+    opacity: 0;
+}
+
+.imgEnterActive {
+    opacity: 1;
+    transition: all 300ms ease-in;
+}
+
+.imgExit {
+    opacity: 1;
+}
+
+.imgExitActive {
+    opacity: 0;
+    transition: all 300ms ease-out;
 }
 
 
@@ -164,7 +201,21 @@
     line-height: 124%;
 }
 
-.guideTextBlock p::before {
+.guideTextBlock ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.guideTextBlock li {
+    position: relative;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 124%;
+}
+
+.guideTextBlock li::before {
     content: '';
     display: block;
     width: 10px;
@@ -176,12 +227,31 @@
     left: -16px;
 }
 
+.staticImg {
+    padding: 0 15px 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.staticImg div {
+    width: 100%;
+}
+
+.staticImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #000;
+}
+
 
 
 @media (min-width: 1025px) {
 
     .container {
-        padding: 48px 80px 80px 80px;
+        margin-top: 180px;
+        padding: 48px 80px 40px 80px;
 
         display: grid;
         grid-template-columns: 320px 1fr;
@@ -270,15 +340,36 @@
     .guideTextBlock p {
         font-size: 20px;
         line-height: 22px;
+    }
+
+    .guideTextBlock ul {
+        gap: 22px;
+    }
+
+    .guideTextBlock li {
+        font-size: 20px;
+        line-height: 22px;
         text-indent: 43px;
     }
 
-    .guideTextBlock p::before {
+    .guideTextBlock li::before {
         width: 18px;
         height: 18px;
         border-radius: 5px;
         top: 0px;
         left: 0px;
+    }
+
+    .staticImg {
+        padding: 0 80px 40px 80px;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .staticImg div {
+        max-width: 828px;
+        max-height: 520px;
     }
 
 }

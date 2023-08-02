@@ -2,7 +2,7 @@ import React from 'react';
 
 import cl from './Email.module.css';
 
-const Email = ({ colorIcon, colorText }) => {
+const Email = ({ colorIcon, colorText, children, email }) => {
     return (
         <div className={cl.email}>
             <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +13,7 @@ const Email = ({ colorIcon, colorText }) => {
                     <path id="Vector_4" d="M18.7122 13.4606C16.647 11.3564 14.6562 9.32779 12.6887 7.32258C14.6015 5.38639 16.6184 3.34603 18.7122 1.22754V13.4606Z" fill={colorIcon} />
                 </g>
             </svg>
-            <a href="mailto:opt_actum@mail.ru" style={{color: colorText}}>opt_actum@mail.ru</a>
+            <a href={`mailto:${email}`} style={{color: colorText}}>{children}</a>
         </div>
     )
 }

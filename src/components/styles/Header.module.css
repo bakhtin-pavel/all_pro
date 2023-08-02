@@ -4,6 +4,7 @@
     border: 1px solid #000000;
     background: rgba(255, 255, 255, 0.88);
 
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -45,39 +46,49 @@
     position: relative;
 }
 
-.menuLink:hover>div {
-    display: block;
-}
-
-.menuLinkActive>div {
-    display: block;
-}
-
 .highlight_1 {
     position: absolute;
-    left: -6px;
+    left: -30px;
     bottom: -1.5px;
+
     width: 162px;
+    height: 20.5px;
+    border-left: 2px solid #A1A6B0;
+    border-bottom: 2px solid #A1A6B0;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s linear;
+}
+
+.menuLink:hover>.highlight_1,
+.menuLinkActive>.highlight_1 {
+    visibility: visible;
+    left: -6px;
+    border-left: 2px solid #000000;
     border-bottom: 2px solid #000000;
-    display: none;
+    opacity: 1;
 }
 
 .highlight_2 {
     position: absolute;
-    right: -5px;
+    right: -30px;
     bottom: -8px;
+
     width: 145px;
-    border-bottom: 2px solid #000000;
-    display: none;
+    border-bottom: 2px solid #A1A6B0;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s linear;
 }
 
-.highlight_3 {
-    position: absolute;
-    left: -6px;
-    bottom: -1.5px;
-    height: 20.5px;
-    border-left: 2px solid #000000;
-    display: none;
+.menuLink:hover>.highlight_2,
+.menuLinkActive>.highlight_2 {
+    visibility: visible;
+    right: -5px;
+    border-bottom: 2px solid #000000;
+    opacity: 1;
 }
 
 
@@ -146,7 +157,7 @@
     .menuLink {
         font-size: 14px;
         line-height: 17px;
-        width: 91px;
+        width: 93px;
     }
 
     .highlight_1 {
@@ -159,12 +170,6 @@
         right: -5px;
         bottom: -10px;
         width: 95px;
-    }
-
-    .highlight_3 {
-        left: -8px;
-        bottom: -4px;
-        height: 20px;
     }
 
 }

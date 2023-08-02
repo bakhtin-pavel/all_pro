@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import cl from './styles/Footer.module.css';
+
+import axios from 'axios';
 
 import Logo from './Logo';
 import ApplicationForm from './ApplicationForm';
@@ -9,6 +11,20 @@ import Phone from './contacts/phone/Phone';
 import Email from './contacts/email/Email';
 
 const Footer = () => {
+    const close = () => console.log('good')
+
+    const [items, setItems] = useState()
+
+    async function fetchContacts() {
+        const response = await axios.get('http://95.163.229.9:8005/v1/contacts')
+        setItems(response.data.data)
+        console.log(response.data.data)
+    }
+
+    useEffect(() => {
+        fetchContacts()
+    }, [])
+
     return (
         <footer className={cl.footer}>
             <div className={cl.footerLeft}>
@@ -17,9 +33,9 @@ const Footer = () => {
                 </div>
                 <div className={cl.contacts}>
                     <h4>Контакты</h4>
-                    <Address colorIcon='white' />
-                    <Phone colorIcon='white' />
-                    <Email colorIcon='white' />
+                    <Address colorIcon='white'>{items && items[1].value}</Address>
+                    <Phone colorIcon='white' phone={items && items[3].value}>{items && items[3].value}</Phone>
+                    <Email colorIcon='white' email={items && items[2].value}>{items && items[2].value}</Email>
                 </div>
                 <div className={cl.social}>
                     <h4>Социальные сети</h4>
@@ -47,7 +63,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <ApplicationForm />
+            <ApplicationForm close={close} visible={false} />
         </footer>
     )
 }

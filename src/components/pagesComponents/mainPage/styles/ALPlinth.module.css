@@ -1,13 +1,23 @@
 .container {
     margin: 0 auto;
-    max-width: 1440px;
+    width: 100%;
     padding: 72px 0px 80px 0px;
 }
 
-.wrapper {
-    margin: 42px 40px 0 80px;
-    max-width: 1320px;
+.headWrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.background {
+    margin: 40px 0px 0 0px;
     background: #D9D9D9;
+}
+
+.wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 80px;
     position: relative;
 }
 
@@ -15,7 +25,7 @@
 .itemSwitchWrapper {
     position: absolute;
     top: 40px;
-    right: 40px;
+    right: 120px;
 
     display: flex;
     flex-direction: column;
@@ -24,44 +34,36 @@
 .itemSwitch {
     position: relative;
     width: 320px;
-    height: 51px;
+    padding: 10px 15px;
     border-radius: 2px;
     border: 1px solid #000;
-    background: #D9D9D9;
+    background: #cacaca;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.itemSwitchTextPlace {
-    margin: 7px 15px 7px 15px;
+.itemSwitch svg {
+    flex-shrink: 0;
 }
 
 .itemSwitchText {
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 18px;
     text-transform: uppercase;
     text-align: left;
-}
-
-.itemSwitchIcon {
-    position: absolute;
-    right: 13px;
-    bottom: 13px;
-
-    width: 11px;
-    height: 11px;
-    background-image: url(../../../media/images/itemSwitchIcon.svg);
-    background-size: cover;
+    word-wrap: break-word;
 }
 
 .dropDown {
-    max-height: 300px;
     overflow-y: auto;
     width: 320px;
-    padding: 0 15px;
-
     border-radius: 2px;
     border: 1px solid #000;
-    background: #D9D9D9;
+    background: #fff;
 }
 
 .dropDown::-webkit-scrollbar {
@@ -75,8 +77,8 @@
 .dropDownItem {
     width: 100%;
     height: 51px;
-    padding: 7px 0;
-    background: #D9D9D9;
+    padding: 7px 15px;
+    background: transparent;
 }
 
 .dropDownItem:not(:last-child) {
@@ -98,6 +100,10 @@
     padding: 0 15px;
 }
 
+.sliderWrapper {
+    width: 100%;
+    margin: 10px 0;
+}
 
 .nextArrow {
     display: block;
@@ -107,9 +113,19 @@
 
     width: 18px;
     height: 18px;
-    background-image: url(../../../media/images/sliderBlueprintNext.svg);
-    background-size: cover;
     cursor: pointer;
+}
+
+.nextArrow svg path {
+    stroke: rgba(161, 166, 176, 1);
+}
+
+.nextArrow:hover svg path {
+    stroke: #000;
+}
+
+.nextArrow:active svg {
+    transform: scale(0.8);
 }
 
 .prevArrow {
@@ -120,26 +136,38 @@
 
     width: 18px;
     height: 18px;
-    background-image: url(../../../media/images/sliderBlueprintPrev.svg);
-    background-size: cover;
     cursor: pointer;
 
     z-index: 10;
 }
 
+.prevArrow svg path {
+    stroke: rgba(161, 166, 176, 1);
+}
+
+.prevArrow:hover svg path {
+    stroke: #000;
+}
+
+.prevArrow:active svg {
+    transform: scale(0.8);
+}
+
 .sliderItem {
-    height: 329px;
+    margin: 0 auto;
+    max-width: 200px;
+    max-height: 330px;
 }
 
 .sliderItem img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
 }
 
 
 .imageWrapper {
-    height: 300px;
+    width: 100%;
+    height: 271px;
 }
 
 .imageWrapper img {
@@ -153,10 +181,9 @@
 
 .itemInfo {
     max-width: 726px;
-    margin: 100px 34px 90px 0;
+    padding: 150px 34px 90px 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .itemInfo h3 {
@@ -184,6 +211,14 @@
         margin: 20px 0 0 0;
     }
 
+    .background {
+        margin: 20px 0px 0 0px;
+    }
+
+    .wrapper {
+        padding: 0 15px;
+    }
+
 
     .itemSwitchWrapper {
         top: 20px;
@@ -203,18 +238,13 @@
         z-index: 10;
     }
 
-    .itemSwitchTextPlace {
+    .itemSwitch * {
         display: none;
     }
 
-    .itemSwitchIcon {
-        display: none;
+    .dropDown {
+        z-index: 1;
     }
-
-    .dropDownContainer {
-        z-index: 10;
-    }
-
 
     .item {
         flex-direction: column;
@@ -234,7 +264,7 @@
 
     .itemInfo {
         max-width: 1024px;
-        margin: 15px 15px 108px 15px;
+        padding: 15px 15px 108px 15px;
     }
 
     .itemInfo h3 {
