@@ -15,7 +15,7 @@ const CooperationForm = () => {
     async function submitApplication(e) {
         e.preventDefault();
 
-        await axios.post('http://95.163.229.9:8005/v1/feedback/partnership', {
+        await axios.post('https://api.alpro13.ru/v1/feedback/partnership', {
             email: application.email,
             phone: application.phone,
             username: application.name,

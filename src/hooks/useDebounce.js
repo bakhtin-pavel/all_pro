@@ -29,7 +29,7 @@ export default function useDebounce(value, delay) {
         // Вызывается снова, только если значение изменится
         // мы так же можем добавить переменную "delay" в массива зависимостей ...
         // ... если вы собираетесь менять ее динамически.
-        [value]
+        [value, delay]
     );
 
     return debouncedValue;

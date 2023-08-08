@@ -1,5 +1,5 @@
 .headContainer {
-    margin-top: 180px;
+    margin-top: 135px;
     width: 100%;
     padding: 43px 0 31px 0;
 
@@ -157,7 +157,10 @@
 
 .contactsBotImg {
     width: 100%;
+    max-height: 768px;
     margin-bottom: -4px;
+    object-fit: cover;
+    object-position: bottom;
 }
 
 

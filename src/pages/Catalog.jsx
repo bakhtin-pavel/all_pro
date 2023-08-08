@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet';
 import cl from './styles/Catalog.module.css';
+
+import models_3D from '../components/media/3DModels/3D_models.max';
+import { handleDownload } from '../components/utilits/handleDownload';
 
 import { NavLink, useNavigate } from 'react-router-dom';
 
@@ -17,7 +21,6 @@ import { useWindowSize } from '../hooks/useWindowSize';
 import SkeletonM from '../components/UI/loader/SkeletonM';
 import useDebounce from '../hooks/useDebounce';
 
-let controller;
 const Catalog = () => {
 
     const filterVids = useSelector((state) => state.filter.vid)
@@ -33,14 +36,14 @@ const Catalog = () => {
 
     const [itemsFilter, setItemsFilter] = useState()
     const [items, setItems] = useState([])
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const size = useWindowSize();
     const [pageCount, setPageCount] = useState()
     let pagesArray = getPagesArray(pageCount)
     const topRef = useRef(null)
 
     async function fetchProductsFilters() {
-        const response = await axios.get('http://95.163.229.9:8005/v1/product/options')
+        const response = await axios.get('https://api.alpro13.ru/v1/product/options')
         setItemsFilter(response.data.data[0].options)
         console.log(response.data.data[0].options)
     }
@@ -51,14 +54,8 @@ const Catalog = () => {
 
     async function fetchProducts() {
         try {
-            if (controller) {
-                controller.abort()
-            }
-            controller = new AbortController();
             setIsLoading(true)
-            console.log(isLoading)
-            const response = await axios.get('http://95.163.229.9:8005/v1/products', {
-                signal: controller.signal,
+            const response = await axios.get('https://api.alpro13.ru/v1/products', {
                 params: {
                     category: 'plintusa',
                     vidy: filterVids,
@@ -75,15 +72,17 @@ const Catalog = () => {
             console.log(error)
         } finally {
             setIsLoading(false)
-            console.log(isLoading)
         }
     }
 
-    const flag = useDebounce(filterColors, 500);
+    const flagColors = useDebounce(filterColors, 500);
+    const flagVids = useDebounce(filterVids, 500);
+    const flagSizes = useDebounce(filterSizes, 500);
 
     useEffect(() => {
         fetchProducts()
-    }, [filterVids, flag, filterSizes, page])
+    }, [flagVids, flagColors, flagSizes, page])
+
 
     const navigate = useNavigate();
 
@@ -91,6 +90,9 @@ const Catalog = () => {
 
     return (
         <div className={cl.containerBuckground}>
+            <Helmet>
+                <title>Al Pro: Каталог</title>
+            </Helmet>
             <div className={cl.container}>
 
                 <div ref={topRef} className={cl.headers}>
@@ -225,8 +227,6 @@ const Catalog = () => {
                                 </div>
                             )
                             : <div className={cl.noProducts}>
-                                <div className={cl.noProductsDecor1}></div>
-                                <div className={cl.noProductsDecor2}></div>
                                 <span>товары не найдены</span>
                                 <p>К сожалению, товары по вашему запросу не найдены.<br />Пожалуйста, скорректируйте параметры в запросе.</p>
                             </div>
@@ -234,7 +234,7 @@ const Catalog = () => {
                 </div>
 
                 <div className={cl.load3D}>
-                    <ButtonInCatalog>скачать 3D Модель</ButtonInCatalog>
+                    <ButtonInCatalog onClick={() => handleDownload(models_3D)}>скачать 3D Модель</ButtonInCatalog>
                 </div>
 
                 <div className={cl.pagination}>
@@ -248,6 +248,15 @@ const Catalog = () => {
                 </div>
 
             </div>
+            {isLoading
+                ? null
+                : items.length
+                    ? null
+                    : <>
+                        <div className={cl.noProductsDecor1}></div>
+                        <div className={cl.noProductsDecor2}></div>
+                    </>
+            }
         </div>
     )
 }

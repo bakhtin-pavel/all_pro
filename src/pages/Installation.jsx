@@ -10,6 +10,7 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 import DropDown from '../components/UI/dropdown/DropDown';
 import { useLocation } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Installation = () => {
 
@@ -20,7 +21,7 @@ const Installation = () => {
     const [item, setItem] = useState();
 
     async function fetchInstallations() {
-        const response = await axios.get('http://95.163.229.9:8005/v1/installation');
+        const response = await axios.get('https://api.alpro13.ru/v1/installation');
         setItems(response.data.data);
         console.log(response.data.data);
     }
@@ -49,6 +50,9 @@ const Installation = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Al Pro: Установка</title>
+            </Helmet>
             <div className={cl.container}>
 
                 <h2>как устанавливать{"\n"}AL плинтус</h2>

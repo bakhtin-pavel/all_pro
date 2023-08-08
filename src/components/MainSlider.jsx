@@ -16,8 +16,9 @@ const MainSlider = () => {
     const [slides, setSlides] = useState([])
 
     async function fetchBanners() {
-        const response = await axios.get('http://95.163.229.9:8005/v1/banners')
+        const response = await axios.get('https://api.alpro13.ru/v1/banners')
         setSlides(response.data.data)
+        console.log(response.data.data)
     }
 
     useEffect(() => {
@@ -26,8 +27,10 @@ const MainSlider = () => {
 
     const settings = {
         dots: true,
+        fade: true,
+        lazyLoad: true,
         infinite: true,
-        speed: 500,
+        speed: 400,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
@@ -49,13 +52,14 @@ const MainSlider = () => {
                 {slides.map((slide) =>
                     <div key={slide.id} className={cl.slideImg}>
                         <img src={slide.image} alt='Изображение' />
+                        <div
+                            className={cl.sliderCaption}
+                            dangerouslySetInnerHTML={{ __html: slide.title }}
+                        >
+                        </div>
                     </div>
                 )}
             </Slider>
-            <div className={cl.sliderCaption}>
-                <div className={cl.sliderCaption_1}>скрытые плинтуса</div>
-                <div className={cl.sliderCaption_2}>красивый пол<br />без лишних деталей</div>
-            </div>
         </div>
     )
 }

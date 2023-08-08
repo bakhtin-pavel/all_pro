@@ -21,7 +21,7 @@ const SpecOffers = () => {
     const [items, setItems] = useState([])
 
     async function fetchProductsSpec() {
-        const response = await axios.get('http://95.163.229.9:8005/v1/products/special')
+        const response = await axios.get('https://api.alpro13.ru/v1/products/special')
         setItems(response.data.data)
         console.log(response.data)
     }
@@ -44,7 +44,7 @@ const SpecOffers = () => {
     const slider = React.useRef(null);
     const settings = {
         dots: false,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: Math.min(3, items ? items.length : 3),
         slidesToScroll: 1,
@@ -61,7 +61,7 @@ const SpecOffers = () => {
                 breakpoint: 1024,
                 settings: {
                     vertical: true,
-                    verticalSwiping: true,
+                    verticalSwiping: false,
                     slidesToShow: 3,
                     nextArrow: <SliderButtonNextV classN={cl.nextArrow} slider={slider} />,
                     prevArrow: <SliderButtonPrevV classN={cl.prevArrow} slider={slider} />,

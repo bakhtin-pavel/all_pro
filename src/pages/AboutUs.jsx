@@ -14,12 +14,16 @@ import about_m_9 from '../components/media/images/about_m_9.bmp';
 import cl from './styles/AboutUs.module.css';
 
 import { useWindowSize } from '../hooks/useWindowSize.js';
+import { Helmet } from 'react-helmet';
 
 const AboutUs = () => {
     const size = useWindowSize();
 
     return (
         <>
+            <Helmet>
+                <title>Al Pro: О Нас</title>
+            </Helmet>
             <div className={cl.container}>
                 <img className={cl.backgroundImg} src={about_background} alt="Изображение" />
                 <h2 className={cl.aboutHead}>О НАС</h2>

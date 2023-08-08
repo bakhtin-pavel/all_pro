@@ -7,6 +7,7 @@ import contacts_bot from '../components/media/images/contacts_bot.png';
 import axios from 'axios';
 
 import CooperationForm from '../components/CooperationForm';
+import { Helmet } from 'react-helmet';
 
 const Contacts = () => {
     const contactsLink = [cl.contactsTexts, cl.contactsLink].join(' ')
@@ -14,7 +15,7 @@ const Contacts = () => {
     const [items, setItems] = useState()
 
     async function fetchContacts() {
-        const response = await axios.get('http://95.163.229.9:8005/v1/contacts')
+        const response = await axios.get('https://api.alpro13.ru/v1/contacts')
         setItems(response.data.data)
         console.log(response.data.data)
     }
@@ -25,6 +26,9 @@ const Contacts = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Al Pro: Контакты</title>
+            </Helmet>
             <div className={cl.headContainer}>
                 <h2>контакты</h2>
                 <div className={cl.headLine}></div>

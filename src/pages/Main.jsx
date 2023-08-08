@@ -9,6 +9,7 @@ import ApplicationButton from '../components/UI/button/ApplicationButton';
 import MyModal from '../components/UI/modal/MyModal';
 import ApplicationForm from '../components/ApplicationForm';
 import SpecOffers from '../components/SpecOffers';
+import { Helmet } from 'react-helmet';
 
 const Main = () => {
 
@@ -20,6 +21,10 @@ const Main = () => {
 
     return (
         <>
+
+            <Helmet>
+                <title>Al Pro</title>
+            </Helmet>
 
             <MainSlider />
 

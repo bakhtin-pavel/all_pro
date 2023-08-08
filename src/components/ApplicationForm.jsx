@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import cl from './styles/ApplicationForm.module.css';
 import politic_doc from './media/documents/politic.pdf';
@@ -15,7 +15,7 @@ const ApplicationForm = ({ close, visible }) => {
     async function submitApplication(e) {
         e.preventDefault();
 
-        await axios.post('http://95.163.229.9:8005/v1/feedback', {
+        await axios.post('https://api.alpro13.ru/v1/feedback', {
             email: application.email,
             phone: application.phone,
             username: application.name,
@@ -36,6 +36,23 @@ const ApplicationForm = ({ close, visible }) => {
         display: 'none'
     };
 
+    const [isVisible, setIsVisible] = useState(false);
+    const decor2Ref = useRef(null);
+
+    const handleScroll = () => {
+        if (decor2Ref.current) {
+            const { top, bottom } = decor2Ref.current.getBoundingClientRect();
+            const isVisible = top < window.innerHeight && bottom >= 0;
+            setIsVisible(isVisible);
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <div className={cl.container}>
 
@@ -46,9 +63,9 @@ const ApplicationForm = ({ close, visible }) => {
             </button>
 
             <h4 className={cl.black}>ЗАЯВКА</h4>
-            <div className={cl.rectangle}></div>
-            <div className={cl.decor1}></div>
-            <div className={cl.decor2}></div>
+            <div className={[cl.rectangle, isVisible ? cl.anim : null].join(' ')}></div>
+            <div className={[cl.decor1, isVisible ? cl.anim1 : null].join(' ')}></div>
+            <div ref={decor2Ref} className={[cl.decor2, isVisible ? cl.anim2 : null].join(' ')}></div>
 
             <form className={cl.form} onSubmit={submitApplication}>
                 <ApplicationInput

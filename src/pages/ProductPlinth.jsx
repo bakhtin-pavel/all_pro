@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import cl from './styles/ProductPlinth.module.css';
 import './styles/ProductPlinth.css';
 
+import models_3D from '../components/media/3DModels/3D_models.max';
+import { handleDownload } from '../components/utilits/handleDownload';
+
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -12,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import SpecOffers from '../components/SpecOffers';
 import ButtonInCatalog from '../components/UI/button/ButtonInCatalog';
+import { Helmet } from 'react-helmet';
 
 const ProductPlinth = () => {
 
@@ -21,7 +25,7 @@ const ProductPlinth = () => {
     const [item, setItem] = useState()
 
     async function fetchProduct() {
-        const response = await axios.get('http://95.163.229.9:8005/v1/product', {
+        const response = await axios.get('https://api.alpro13.ru/v1/product', {
             params: {
                 slug: params.slug,
             }
@@ -49,10 +53,14 @@ const ProductPlinth = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
+        adaptiveHeight: true,
     };
 
     return (
         <>
+            <Helmet>
+                <title>{`Al Pro: ${item && item.name}`}</title>
+            </Helmet>
             <div className={cl.container}>
                 <button className={cl.goBack} onClick={() => navigate(-1)}>
                     <svg width="22" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,13 +104,13 @@ const ProductPlinth = () => {
                         </div>
                         <div className={cl.buttons}>
                             <div className={cl.button}>
-                                <ButtonInCatalog>скачать 3D Модель</ButtonInCatalog>
+                                <ButtonInCatalog onClick={() => handleDownload(models_3D)}>скачать 3D Модель</ButtonInCatalog>
                             </div>
                             <div className={cl.button}>
                                 <ButtonInCatalog onClick={() => navigate('/installation', { state: { vid: item.options[0].values[0].slug } })}>монтаж плинтуса</ButtonInCatalog>
                             </div>
                         </div>
-                        <p className={cl.price}>1500₽</p>
+                        <p className={cl.price}>{item && item.price}₽</p>
                     </div>
                 </div>
                 <div className={cl.info}>

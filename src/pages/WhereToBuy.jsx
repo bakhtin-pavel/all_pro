@@ -10,6 +10,7 @@ import Address from '../components/contacts/address/Address';
 import Email from '../components/contacts/email/Email';
 import Phone from '../components/contacts/phone/Phone';
 import { useWindowSize } from '../hooks/useWindowSize';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -19,7 +20,7 @@ const WhereToBuy = () => {
     const [item, setItem] = useState([])
 
     async function fetchAddress() {
-        const response = await axios.get('http://95.163.229.9:8005/v1/addresses')
+        const response = await axios.get('https://api.alpro13.ru/v1/addresses')
         setItem(response.data.data)
     }
 
@@ -57,6 +58,10 @@ const WhereToBuy = () => {
 
     return (
         <section>
+
+            <Helmet>
+                <title>Al Pro: Где купить</title>
+            </Helmet>
 
             <div className={cl.headContainer}>
                 <h2>Где купить</h2>

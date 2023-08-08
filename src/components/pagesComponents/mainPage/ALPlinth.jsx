@@ -18,7 +18,7 @@ const ALPlinth = () => {
     const [item, setItem] = useState();
 
     async function fetchAllPlinth() {
-        const response = await axios.get('http://95.163.229.9:8005/v1/blueprints')
+        const response = await axios.get('https://api.alpro13.ru/v1/blueprints')
         setAllPlinth(response.data.data)
         console.log(response.data.data)
     }

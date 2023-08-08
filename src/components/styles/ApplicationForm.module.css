@@ -34,12 +34,35 @@
     position: absolute;
     top: 68px;
     left: 53px;
+    opacity: 0;
+    transform: translateX(-190px);
+}
+
+.rectangle.anim {
+    opacity: 1;
+    transform: translateX(0px);
+    animation: anim 500ms ease-in;
+}
+
+@keyframes anim {
+    0% {
+        opacity: 0;
+        transform: translateX(-190px);
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
 
 .decor1 {
-    width: calc(100% - 203px);
-    height: 17px;
-    border-left: 2px solid #000;
+    width: 0;
+    height: 0;
     border-bottom: 2px solid #000;
 
     position: absolute;
@@ -47,13 +70,53 @@
     right: 0;
 }
 
+.decor1.anim1 {
+    width: calc(100% - 203px);
+    height: 17px;
+    border-left: 2px solid #000;
+    animation: animDecor1 500ms ease-in;
+}
+
+@keyframes animDecor1 {
+    0% {
+        width: 0;
+        border-left: none;
+    }
+
+    90% {
+        width: calc(100% - 203px);
+        border-left: none;
+    }
+
+    100% {
+        width: calc(100% - 203px);
+        border-left: 2px solid #000;
+    }
+}
+
 .decor2 {
-    width: calc(100% - 280px);
+    width: 0;
     border-bottom: 2px solid #000;
+    transition: all 400ms ease-in;
 
     position: absolute;
     top: 94px;
     right: 0;
+}
+
+.decor2.anim2 {
+    width: calc(100% - 280px);
+    animation: animDecor2 350ms ease-in;
+}
+
+@keyframes animDecor2 {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: calc(100% - 280px);
+    }
 }
 
 /* end заголовок + декоративные элементы */
@@ -151,10 +214,27 @@
         border-radius: 1px;
         top: 44px;
         left: 7px;
+        transform: translateX(-87px);
+    }
+
+    @keyframes anim {
+        0% {
+            opacity: 0;
+            transform: translateX(-87px);
+        }
+
+        40% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0px);
+        }
     }
 
     .decor1 {
-        width: calc(100% - 106px);
+        width: 0;
         height: 14px;
         border-left: 4px solid #000;
         border-bottom: 4px solid #000;
@@ -162,11 +242,49 @@
         top: 36px;
     }
 
+    .decor1.anim1 {
+        width: calc(100% - 106px);
+        height: 14px;
+        border-left: 4px solid #000;
+    }
+
+    @keyframes animDecor1 {
+        0% {
+            width: 0;
+            border-left: none;
+        }
+
+        95% {
+            width: calc(100% - 106px);
+            border-left: none;
+        }
+
+        100% {
+            width: calc(100% - 106px);
+            border-left: 4px solid #000;
+        }
+    }
+
     .decor2 {
-        width: calc(100% - 225px);
+        width: 0;
         border-bottom: 4px solid #000;
+        transition: all 400ms ease-in;
 
         top: 64px;
+    }
+
+    .decor2.anim2 {
+        width: calc(100% - 225px);
+    }
+
+    @keyframes animDecor2 {
+        0% {
+            width: 0;
+        }
+
+        100% {
+            width: calc(100% - 225px);
+        }
     }
 
     /* end заголовок + декоративные элементы */

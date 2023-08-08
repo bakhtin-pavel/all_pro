@@ -1,7 +1,8 @@
 .containerBuckground {
-    margin-top: 180px;
+    margin-top: 135px;
     width: 100%;
     background: rgba(217, 217, 217, 0.40);
+    position: relative;
 }
 
 .container {
@@ -69,6 +70,8 @@
     border-top: none;
     background: #FFF;
     padding: 0 12px 12px 12px;
+    scrollbar-color: #7B7B7B transparent;
+    scrollbar-width: thin;
 
     display: flex;
     flex-direction: column;
@@ -161,11 +164,11 @@ input[type="checkbox"]+label::after {
 
 .noProductsDecor1 {
     position: absolute;
-    top: 78px;
-    right: calc((((100vw - 1440px) / 2) + 80px) * (-1));
+    bottom: 515px;
+    right: 0;
     z-index: -1;
 
-    width: 62.5vw;
+    width: 62vw;
     height: 32px;
     background: transparent;
     border-left: 12px solid #D9D9D9;
@@ -174,8 +177,8 @@ input[type="checkbox"]+label::after {
 
 .noProductsDecor2 {
     position: absolute;
-    top: 142px;
-    right: calc((((100vw - 1440px) / 2) + 80px) * (-1));
+    bottom: 470px;
+    right: 0;
     z-index: -1;
 
     width: 79.2vw;
@@ -202,9 +205,14 @@ input[type="checkbox"]+label::after {
     border: 1px solid #000;
     cursor: pointer;
     animation: cardFade 0.7s linear;
+    transition: all 200ms linear;
 
     display: flex;
     flex-direction: column;
+}
+
+.productCard:hover {
+    transform: scale(1.025);
 }
 
 @keyframes cardFade {
@@ -345,19 +353,6 @@ input[type="checkbox"]+label::after {
 }
 
 
-@media (max-width: 1440px) {
-
-    .noProductsDecor1 {
-        right: -80px;
-    }
-
-    .noProductsDecor2 {
-        right: -80px;
-    }
-
-}
-
-
 
 @media (max-width: 1365px) {
 
@@ -431,8 +426,7 @@ input[type="checkbox"]+label::after {
     }
 
     .noProductsDecor1 {
-        top: 10px;
-        right: -15px;
+        bottom: 285px;
 
         height: 20px;
         border-left: 6px solid #D9D9D9;
@@ -440,8 +434,7 @@ input[type="checkbox"]+label::after {
     }
 
     .noProductsDecor2 {
-        top: 50px;
-        right: -15px;
+        bottom: 265px;
 
         border-bottom: 6px solid #D9D9D9;
     }

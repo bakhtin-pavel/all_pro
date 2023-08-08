@@ -16,7 +16,7 @@ const Footer = () => {
     const [items, setItems] = useState()
 
     async function fetchContacts() {
-        const response = await axios.get('http://95.163.229.9:8005/v1/contacts')
+        const response = await axios.get('https://api.alpro13.ru/v1/contacts')
         setItems(response.data.data)
         console.log(response.data.data)
     }
@@ -37,7 +37,7 @@ const Footer = () => {
                     <Phone colorIcon='white' phone={items && items[3].value}>{items && items[3].value}</Phone>
                     <Email colorIcon='white' email={items && items[2].value}>{items && items[2].value}</Email>
                 </div>
-                <div className={cl.social}>
+                {/* <div className={cl.social}>
                     <h4>Социальные сети</h4>
                     <div>
                         <a href="#s">
@@ -61,7 +61,7 @@ const Footer = () => {
                             </svg>
                         </a>
                     </div>
-                </div>
+                </div> */}
             </div>
             <ApplicationForm close={close} visible={false} />
         </footer>
