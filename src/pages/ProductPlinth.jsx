@@ -7,7 +7,7 @@ import models_3D from '../components/media/3DModels/3D_models.max';
 import { handleDownload } from '../components/utilits/handleDownload';
 
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
@@ -15,14 +15,20 @@ import "slick-carousel/slick/slick-theme.css";
 
 import SpecOffers from '../components/SpecOffers';
 import ButtonInCatalog from '../components/UI/button/ButtonInCatalog';
+import MyModal from '../components/UI/modal/MyModal';
+
 import { Helmet } from 'react-helmet';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 const ProductPlinth = () => {
 
+    const { pathname } = useLocation();
     const navigate = useNavigate()
     const params = useParams()
 
     const [item, setItem] = useState()
+    const [modal, setModal] = useState(false)
+    const size = useWindowSize();
 
     async function fetchProduct() {
         const response = await axios.get('https://api.alpro13.ru/v1/product', {
@@ -36,7 +42,7 @@ const ProductPlinth = () => {
 
     useEffect(() => {
         fetchProduct()
-    }, [])
+    }, [pathname])
 
 
 
@@ -78,7 +84,18 @@ const ProductPlinth = () => {
                     <div id='sliderProduct' className={cl.sliderContainer}>
                         <Slider {...settings}>
                             {item && item.bigImages.map((img, index) =>
-                                index !== 0 && <img key={img} src={img} alt="Изображение" className={cl.slideImg} />
+                                index !== 0 &&
+                                <img
+                                    key={img}
+                                    src={img}
+                                    alt="Изображение"
+                                    className={cl.slideImg}
+                                    onClick={() => {
+                                        if (size.innerWidth > 1024) {
+                                            setModal(true)
+                                        }
+                                    }}
+                                />
                             )}
                         </Slider>
                     </div>
@@ -110,6 +127,12 @@ const ProductPlinth = () => {
                                 <ButtonInCatalog onClick={() => navigate('/installation', { state: { vid: item.options[0].values[0].slug } })}>монтаж плинтуса</ButtonInCatalog>
                             </div>
                         </div>
+                        {item && item.is_special && item.discount &&
+                            <div className={cl.discountPrice}>
+                                <p>-{item.discount}%</p>
+                                <div></div>
+                            </div>
+                        }
                         <p className={cl.price}>{item && item.price}₽</p>
                     </div>
                 </div>
@@ -118,6 +141,21 @@ const ProductPlinth = () => {
                 </div>
             </div>
             <SpecOffers />
+            <MyModal visible={modal} setVisible={setModal} modalContent={cl.modalContent}>
+                <div id='modalSlider'>
+                    <Slider {...settings}>
+                        {item && item.bigImages.map((img, index) =>
+                            index !== 0 &&
+                            <img
+                                key={img}
+                                src={img}
+                                alt="Изображение"
+                            />
+                        )}
+                    </Slider>
+                </div>
+                <button className={cl.closeModalButton} onClick={() => setModal(false)}></button>
+            </MyModal>
         </>
     )
 }

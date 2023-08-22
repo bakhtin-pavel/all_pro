@@ -4,6 +4,7 @@
     border-radius: 2px;
     border: 1px solid #000;
     background: transparent;
+    transition: all 250ms ease-out;
 
     font-size: 14px;
     font-weight: 400;
@@ -24,5 +25,17 @@
 
         font-size: 13px;
     }
-    
+
+    .button:hover {
+        background: transparent;
+
+        color: #000;
+    }
+
+    .button:active {
+        background: #000;
+
+        color: #FFF;
+    }
+
 }

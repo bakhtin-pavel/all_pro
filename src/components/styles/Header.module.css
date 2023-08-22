@@ -2,13 +2,13 @@
     height: 135px;
     padding: 0 8.1vw 0 4.7vw;
     border: 1px solid #000000;
-    background: rgba(255, 255, 255, 0.88);
+    background: rgba(255, 255, 255, 0.95);
 
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1000;
 
     display: flex;
     justify-content: space-between;
@@ -131,7 +131,7 @@
         z-index: 10;
 
         padding: 36px 0 0 0;
-        background: rgba(255, 255, 255, 0.88);
+        background: rgba(255, 255, 255, 0.95);
         border: 1px solid #000000;
 
         display: flex;

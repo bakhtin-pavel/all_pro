@@ -4,6 +4,8 @@ import cl from './styles/SpecOffers.module.css';
 
 import axios from 'axios';
 
+import { useNavigate } from 'react-router-dom';
+
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -15,6 +17,8 @@ import SliderButtonNextV from './UI/button/SliderButtonNextV';
 import SliderButtonPrevV from './UI/button/SliderButtonPrevV';
 
 const SpecOffers = () => {
+
+    const navigate = useNavigate();
 
     const size = useWindowSize()
 
@@ -44,7 +48,7 @@ const SpecOffers = () => {
     const slider = React.useRef(null);
     const settings = {
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: Math.min(3, items ? items.length : 3),
         slidesToScroll: 1,
@@ -82,7 +86,7 @@ const SpecOffers = () => {
                 {size.innerWidth < 1025 && items.length <= 3
                     ? <div className={cl.fewSlides}>
                         {items && items.map((item) =>
-                            <div key={item.id} className={cl.sliderItem}>
+                            <div key={item.id} className={cl.sliderItem} onClick={() => navigate(`/catalog/${item.slug}`)}>
                                 <div className={cl.itemImg}>
                                     <img src={item.images[0]} alt="Изображение" />
                                 </div>
@@ -104,7 +108,7 @@ const SpecOffers = () => {
                         <Slider ref={slider} {...settings}>
                             {items && items.map((item) =>
                                 <div key={item.id} className='heightSlide'>
-                                    <div className={cl.sliderItem}>
+                                    <div className={cl.sliderItem} onClick={() => navigate(`/catalog/${item.slug}`)}>
                                         <div className={cl.itemImg}>
                                             <img src={item.images[0]} alt="Изображение" />
                                         </div>

@@ -21,6 +21,9 @@ import { useWindowSize } from '../hooks/useWindowSize';
 import SkeletonM from '../components/UI/loader/SkeletonM';
 import useDebounce from '../hooks/useDebounce';
 
+import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
+
 const Catalog = () => {
 
     const filterVids = useSelector((state) => state.filter.vid)
@@ -196,9 +199,13 @@ const Catalog = () => {
                                     className={cl.productCard}
                                     onClick={() => navigate(`/catalog/${item.slug}`)}
                                 >
-                                    <div className={cl.cardImgWrapper}>
-                                        <img src={item.images[0]} alt="Изображение товара" />
-                                    </div>
+                                    <InnerImageZoom
+                                        src={item.images[0]}
+                                        zoomSrc={item.bigImages[0]}
+                                        zoomType="hover"
+                                        zoomPreload={true}
+                                        zoomScale={0.55}
+                                    />
                                     <div className={cl.cardInfoContainer}>
                                         <div>
                                             <h3 className={cl.cardName}>{item.name}</h3>

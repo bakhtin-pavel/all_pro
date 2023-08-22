@@ -1,3 +1,23 @@
 #sliderProduct ul li.slick-active {
     background: #000C18;
 }
+
+
+
+#modalSlider ul li.slick-active {
+    background: #000C18;
+}
+
+#modalSlider .slick-slider {
+    width: 100%;
+    height: 100%;
+}
+
+#modalSlider .slick-list {
+    height: calc(100% - 77px) !important;
+}
+
+#modalSlider .slick-track,
+#modalSlider .slick-slide div {
+    height: 100%;
+}

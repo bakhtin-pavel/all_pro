@@ -21,7 +21,26 @@ const WhereToBuy = () => {
 
     async function fetchAddress() {
         const response = await axios.get('https://api.alpro13.ru/v1/addresses')
-        setItem(response.data.data)
+        const sortResponse = response.data.data.sort((a, b) => {
+            const addressA = a.address.toUpperCase();
+            const addressB = b.address.toUpperCase();
+            const startCity = "Г. КРАСНОЯРСК";
+            if (addressA.includes(startCity) && !addressB.includes(startCity)) {
+                return -1;
+            }
+            if (!addressA.includes(startCity) && addressB.includes(startCity)) {
+                return 1;
+            }
+            if (addressA < addressB) {
+                return -1;
+            }
+            if (addressA > addressB) {
+                return 1;
+            }
+            return 0;
+        });
+        setItem(sortResponse)
+        console.log(sortResponse)
     }
 
     useEffect(() => {
@@ -34,7 +53,7 @@ const WhereToBuy = () => {
 
     function scrollToId(item) {
         window.scrollBy(0, 0.1)
-        mapRef.current.setZoom(15)
+        mapRef.current.setZoom(12)
         mapRef.current.setCenter([item.coordinate_x, item.coordinate_y])
         if (highlightOff) {
             highlightOff.classList.remove(cl.itemActive)
@@ -75,8 +94,8 @@ const WhereToBuy = () => {
                     <Mapi
                         instanceRef={mapRef}
                         defaultState={{
-                            center: [54.975922, 73.324444],
-                            zoom: 11,
+                            center: [55.030204, 82.920430],
+                            zoom: 4,
                             controls: ["zoomControl"],
                         }}
                         modules={["control.ZoomControl"]}

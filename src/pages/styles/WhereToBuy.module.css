@@ -63,7 +63,7 @@
 }
 
 .itemConteiner::-webkit-scrollbar {
-    width: 4px;
+    width: 9px;
 }
 
 .itemConteiner::-webkit-scrollbar-thumb {

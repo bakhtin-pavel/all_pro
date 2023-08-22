@@ -6,34 +6,6 @@ import { NavLink, Link } from 'react-router-dom';
 
 const Header = () => {
 
-    // const location = useLocation();
-
-    // const isHomePage = location.pathname === '/';
-
-    // const fixedHeader = {
-    //     position: 'fixed'
-    // }
-
-    // const [changed, setChanged] = useState(false)
-    // useEffect(() => {
-
-    //     const updatePosition = () => {
-
-    //         const scrollY = window.scrollY
-
-    //         if (scrollY > 180) {
-    //             !changed && setChanged(true)
-    //         } else {
-    //             changed && setChanged(false)
-    //         }
-
-    //     }
-
-    //     window.addEventListener('scroll', updatePosition);
-    //     updatePosition()
-    //     return () => window.removeEventListener('scroll', updatePosition);
-    // })
-
     const [modal, setModal] = useState(false)
     const menuMobile = [cl.menuMobile]
     const menuMobileButton = [cl.menuMobileOpen]
