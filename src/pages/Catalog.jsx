@@ -20,6 +20,7 @@ import Skeleton from '../components/UI/loader/Skeleton';
 import { useWindowSize } from '../hooks/useWindowSize';
 import SkeletonM from '../components/UI/loader/SkeletonM';
 import useDebounce from '../hooks/useDebounce';
+import { ReactComponent as CurrentFilterDelete } from '../components/media/images/currentFilterDelete.svg';
 
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
@@ -31,13 +32,20 @@ const Catalog = () => {
     const filterSizes = useSelector((state) => state.filter.size)
     const page = useSelector((state) => state.filter.page)
     const dispatch = useDispatch()
+    console.log(filterVids)
 
     const changePage = (p) => {
         dispatch(changePages(p));
         topRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    const [itemsFilter, setItemsFilter] = useState()
+    const [itemsFilterVids, setItemsFilterVids] = useState()
+    const [itemsFilterColors, setItemsFilterColors] = useState()
+    const [itemsFilterSizes, setItemsFilterSizes] = useState()
+    const [filterConnections, setFilterConnections] = useState()
+    const [currentFilterSizes, setCurrentFilterSizes] = useState([])
+    const [currentFilterColors, setCurrentFilterColors] = useState([])
+    const [currentFilterVids, setCurrentFilterVids] = useState([])
     const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(true);
     const size = useWindowSize();
@@ -47,8 +55,13 @@ const Catalog = () => {
 
     async function fetchProductsFilters() {
         const response = await axios.get('https://api.alpro13.ru/v1/product/options')
-        setItemsFilter(response.data.data[0].options)
-        console.log(response.data.data[0].options)
+        setItemsFilterVids(response.data.data[0].options[0].values)
+        setCurrentFilterVids(response.data.data[0].options[0].values.map((item) => item.slug))
+        setItemsFilterColors(response.data.data[0].options[1].values)
+        setCurrentFilterColors(response.data.data[0].options[1].values.map((item) => item.slug))
+        setItemsFilterSizes(response.data.data[0].options[2].values)
+        setCurrentFilterSizes(response.data.data[0].options[2].values.map((item) => item.slug))
+        console.log(response.data.data[0].options[0].values)
     }
 
     useEffect(() => {
@@ -86,6 +99,211 @@ const Catalog = () => {
         fetchProducts()
     }, [flagVids, flagColors, flagSizes, page])
 
+    async function fetchProductsFiltersConnection() {
+        const response = await axios.get('https://api.alpro13.ru/v1/product/filters')
+        setFilterConnections(response.data.data)
+        console.log(response.data)
+    }
+
+    useEffect(() => {
+        fetchProductsFiltersConnection()
+    }, [])
+
+    const changeFilterSizes = () => {
+        if (!filterVids.length && !filterColors.length) {
+            if (itemsFilterSizes) {
+                setCurrentFilterSizes(itemsFilterSizes.map((item) => item.slug))
+                return
+            }
+            return
+        }
+
+        if (!filterConnections) return
+
+        const sizeSlugArrayOfVid = []
+        const sizeSlugArrayOfColor = []
+
+        if (filterVids.length && filterColors.length) {
+            filterVids.forEach((vid) => {
+                filterConnections[vid].razmer.forEach((razmer) => {
+                    if (!sizeSlugArrayOfVid.includes(razmer)) {
+                        sizeSlugArrayOfVid.push(razmer)
+                    }
+                })
+            })
+            filterColors.forEach((color) => {
+                const sizeArray = Object.entries(filterConnections).filter(([key, value]) => value.cvet.includes(color)).map(([key, value]) => value.razmer);
+                sizeArray.forEach((arr) => {
+                    arr.forEach((size) => {
+                        if (!sizeSlugArrayOfColor.includes(size)) {
+                            sizeSlugArrayOfColor.push(size)
+                        }
+                    })
+                })
+            })
+            const sizeSlugArray = sizeSlugArrayOfVid.filter((size) => sizeSlugArrayOfColor.includes(size))
+            return setCurrentFilterSizes(sizeSlugArray)
+        }
+
+        if (filterVids.length) {
+            filterVids.forEach((vid) => {
+                filterConnections[vid].razmer.forEach((razmer) => {
+                    if (!sizeSlugArrayOfVid.includes(razmer)) {
+                        sizeSlugArrayOfVid.push(razmer)
+                    }
+                })
+            })
+            return setCurrentFilterSizes(sizeSlugArrayOfVid)
+        }
+
+        if (filterColors.length) {
+            filterColors.forEach((color) => {
+                const sizeArray = Object.entries(filterConnections).filter(([key, value]) => value.cvet.includes(color)).map(([key, value]) => value.razmer);
+                console.log(sizeArray)
+                sizeArray.forEach((arr) => {
+                    arr.forEach((size) => {
+                        if (!sizeSlugArrayOfColor.includes(size)) {
+                            sizeSlugArrayOfColor.push(size)
+                        }
+                    })
+                })
+            })
+            return setCurrentFilterSizes(sizeSlugArrayOfColor)
+        }
+    }
+
+    useEffect(() => {
+        changeFilterSizes()
+    }, [filterVids, filterColors, filterConnections])
+
+    const changeFilterColors = () => {
+        if (!filterVids.length && !filterSizes.length) {
+            if (itemsFilterColors) {
+                setCurrentFilterColors(itemsFilterColors.map((item) => item.slug))
+                return
+            }
+            return
+        }
+
+        if (!filterConnections) return
+
+        const colorSlugArrayOfVid = []
+        const colorSlugArrayOfSize = []
+
+        if (filterVids.length && filterSizes.length) {
+            filterVids.forEach((vid) => {
+                filterConnections[vid].cvet.forEach((cvet) => {
+                    if (!colorSlugArrayOfVid.includes(cvet)) {
+                        colorSlugArrayOfVid.push(cvet)
+                    }
+                })
+            })
+            filterSizes.forEach((size) => {
+                const colorArray = Object.entries(filterConnections).filter(([key, value]) => value.razmer.includes(size)).map(([key, value]) => value.cvet);
+                colorArray.forEach((arr) => {
+                    arr.forEach((color) => {
+                        if (!colorSlugArrayOfSize.includes(color)) {
+                            colorSlugArrayOfSize.push(color)
+                        }
+                    })
+                })
+            })
+            const colorSlugArray = colorSlugArrayOfVid.filter((color) => colorSlugArrayOfSize.includes(color))
+            return setCurrentFilterColors(colorSlugArray)
+        }
+
+        if (filterVids.length) {
+            filterVids.forEach((vid) => {
+                filterConnections[vid].cvet.forEach((cvet) => {
+                    if (!colorSlugArrayOfVid.includes(cvet)) {
+                        colorSlugArrayOfVid.push(cvet)
+                    }
+                })
+            })
+            console.log(colorSlugArrayOfVid)
+            return setCurrentFilterColors(colorSlugArrayOfVid)
+        }
+
+        if (filterSizes.length) {
+            filterSizes.forEach((size) => {
+                const colorArray = Object.entries(filterConnections).filter(([key, value]) => value.razmer.includes(size)).map(([key, value]) => value.cvet);
+                colorArray.forEach((arr) => {
+                    arr.forEach((color) => {
+                        if (!colorSlugArrayOfSize.includes(color)) {
+                            colorSlugArrayOfSize.push(color)
+                        }
+                    })
+                })
+            })
+            console.log(colorSlugArrayOfSize)
+            return setCurrentFilterColors(colorSlugArrayOfSize)
+        }
+    }
+
+    useEffect(() => {
+        changeFilterColors()
+    }, [filterVids, filterSizes, filterConnections])
+
+    const changeFilterVids = () => {
+        if (!filterSizes.length && !filterColors.length) {
+            if (itemsFilterVids) {
+                setCurrentFilterVids(itemsFilterVids.map((item) => item.slug))
+                return
+            }
+            return
+        }
+
+        if (!filterConnections) return
+
+        const vidSlugArrayOfSize = []
+        const vidSlugArrayOfColors = []
+        if (filterSizes.length && filterColors.length) {
+            filterSizes.forEach((size) => {
+                const vidArray = Object.entries(filterConnections).filter(([key, value]) => value.razmer.includes(size)).map(([key, value]) => key);
+                vidArray.forEach((vid) => {
+                    if (!vidSlugArrayOfSize.includes(vid)) {
+                        vidSlugArrayOfSize.push(vid)
+                    }
+                })
+            })
+            filterColors.forEach((color) => {
+                const vidArray = Object.entries(filterConnections).filter(([key, value]) => value.cvet.includes(color)).map(([key, value]) => key);
+                vidArray.forEach((vid) => {
+                    if (!vidSlugArrayOfColors.includes(vid)) {
+                        vidSlugArrayOfColors.push(vid)
+                    }
+                })
+            })
+            const vidSlugArray = vidSlugArrayOfSize.filter((vid) => vidSlugArrayOfColors.includes(vid));
+            return setCurrentFilterVids(vidSlugArray)
+        }
+        if (filterSizes.length) {
+            filterSizes.forEach((size) => {
+                const vidArray = Object.entries(filterConnections).filter(([key, value]) => value.razmer.includes(size)).map(([key, value]) => key);
+                vidArray.forEach((vid) => {
+                    if (!vidSlugArrayOfSize.includes(vid)) {
+                        vidSlugArrayOfSize.push(vid)
+                    }
+                })
+            })
+            return setCurrentFilterVids(vidSlugArrayOfSize)
+        }
+        if (filterColors.length) {
+            filterColors.forEach((color) => {
+                const vidArray = Object.entries(filterConnections).filter(([key, value]) => value.cvet.includes(color)).map(([key, value]) => key);
+                vidArray.forEach((vid) => {
+                    if (!vidSlugArrayOfColors.includes(vid)) {
+                        vidSlugArrayOfColors.push(vid)
+                    }
+                })
+            })
+            return setCurrentFilterVids(vidSlugArrayOfColors)
+        }
+    }
+
+    useEffect(() => {
+        changeFilterVids()
+    }, [filterSizes, filterColors, filterConnections])
 
     const navigate = useNavigate();
 
@@ -119,9 +337,10 @@ const Catalog = () => {
                         classFilter={cl.filterType}
                         classDropdown={cl.dropDownContainer}
                     >
-                        {itemsFilter && itemsFilter[0].values.map((itemFilter, index) =>
+                        {itemsFilterVids && itemsFilterVids.map((itemFilter, index) =>
                             <div key={index} className={cl.filterItem}>
                                 <input
+                                    disabled={currentFilterVids.includes(itemFilter.slug) || filterVids.includes(itemFilter.slug) ? false : true}
                                     type="checkbox"
                                     id={index}
                                     className={cl.customCheckbox}
@@ -143,9 +362,10 @@ const Catalog = () => {
                         classFilter={cl.filterType}
                         classDropdown={cl.dropDownContainer}
                     >
-                        {itemsFilter && itemsFilter[1].values.map((itemFilter, index) =>
+                        {itemsFilterColors && itemsFilterColors.map((itemFilter, index) =>
                             <div key={index} className={cl.filterItem}>
                                 <input
+                                    disabled={currentFilterColors.includes(itemFilter.slug) || filterColors.includes(itemFilter.slug) ? false : true}
                                     type="checkbox"
                                     id={index}
                                     className={cl.customCheckbox}
@@ -167,9 +387,10 @@ const Catalog = () => {
                         classFilter={cl.filterType}
                         classDropdown={cl.dropDownContainer}
                     >
-                        {itemsFilter && itemsFilter[2].values.map((itemFilter, index) =>
+                        {itemsFilterSizes && itemsFilterSizes.map((itemFilter, index) =>
                             <div key={index} className={cl.filterItem}>
                                 <input
+                                    disabled={currentFilterSizes.includes(itemFilter.slug) || filterSizes.includes(itemFilter.slug) ? false : true}
                                     type="checkbox"
                                     id={index}
                                     className={cl.customCheckbox}
@@ -185,6 +406,33 @@ const Catalog = () => {
                             </div>
                         )}
                     </Filter>
+                </div>
+
+                <div className={cl.currentFilters}>
+                    {itemsFilterVids && itemsFilterVids.filter((item) => filterVids.includes(item.slug)).map((item) =>
+                        <button
+                            onClick={() => dispatch(changeVids(item.slug))}
+                        >
+                            <p>{item.name}</p>
+                            <CurrentFilterDelete />
+                        </button>
+                    )}
+                    {itemsFilterColors && itemsFilterColors.filter((item) => filterColors.includes(item.slug)).map((item) =>
+                        <button
+                            onClick={() => dispatch(changeColors(item.slug))}
+                        >
+                            <p>{item.name}</p>
+                            <CurrentFilterDelete />
+                        </button>
+                    )}
+                    {itemsFilterSizes && itemsFilterSizes.filter((item) => filterSizes.includes(item.slug)).map((item) =>
+                        <button
+                            onClick={() => dispatch(changeSizes(item.slug))}
+                        >
+                            <p>{item.name}</p>
+                            <CurrentFilterDelete />
+                        </button>
+                    )}
                 </div>
 
                 <div className={cl.productContainer}>

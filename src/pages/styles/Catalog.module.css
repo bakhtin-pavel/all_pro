@@ -114,6 +114,10 @@
     opacity: 0;
 }
 
+.customCheckbox:disabled+label {
+    color: #D9D9D9;
+}
+
 input[type="checkbox"]:checked+label::before {
     content: '';
     display: block;
@@ -142,6 +146,39 @@ input[type="checkbox"]+label::after {
 
 /* Filters End */
 
+/* Выбранные фильтры */
+.currentFilters {
+    width: 100%;
+    margin-bottom: 40px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.currentFilters button {
+    padding: 5px 10px 7px 10px;
+    background: #D9D9D9;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.currentFilters button p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: lowercase;
+}
+
+.currentFilters button svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+/* Выбранные фильтры конец */
 
 
 .productContainer {
@@ -404,6 +441,23 @@ input[type="checkbox"]+label::after {
     }
 
     /* Filters End */
+
+    /* Выбранные фильтры */
+    .currentFilters {
+        margin-bottom: 24px;
+        gap: 12px;
+    }
+
+    .currentFilters button p {
+        font-size: 14px;
+    }
+
+    .currentFilters button svg {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Выбранные фильтры конец */
 
 
 
